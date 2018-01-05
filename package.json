@@ -1,0 +1,52 @@
+{
+  "name": "node-admin",
+  "description": "REST Server",
+  "version": "0.1.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "alinex",
+    "email": "info@alinex.de"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^8.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "dependencies": {
+    "@feathersjs/authentication": "^2.1.1",
+    "@feathersjs/authentication-jwt": "^1.0.2",
+    "@feathersjs/authentication-local": "^1.0.4",
+    "@feathersjs/configuration": "^1.0.2",
+    "@feathersjs/errors": "^3.2.1",
+    "@feathersjs/express": "^1.1.2",
+    "@feathersjs/feathers": "^3.0.5",
+    "@feathersjs/socketio": "^3.0.2",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "feathers-memory": "^2.1.0",
+    "helmet": "^3.9.0",
+    "serve-favicon": "^2.4.5",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
