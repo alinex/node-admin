@@ -1,18 +1,28 @@
 {
-  "name": "node-admin",
-  "description": "REST Server",
+  "name": "alinex-admin-server",
+  "description": "Alinex Admin Server",
   "version": "0.1.0",
-  "homepage": "",
-  "main": "src",
+  "private": true,
+  "title": "Alinex Admin Server",
   "keywords": [
-    "feathers"
+    "admin",
+    "REST",
+    "server"
   ],
+  "license": "Apache-2.0",
   "author": {
-    "name": "alinex",
-    "email": "info@alinex.de"
+    "name": "Alexander Schilling",
+    "email": "info@alinex.de",
+    "web": "http://alinex.de"
   },
   "contributors": [],
-  "bugs": {},
+  "copyright": "Alexander Schilling 2018",
+  "homepage": "https://alinex.gitbooks.io/quasar-admin/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alinex/quasar-admin"
+  },
+  "bugs": "https://github.com/alinex/quasar-admin/issues",
   "directories": {
     "lib": "src",
     "test": "test/"
@@ -39,7 +49,9 @@
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "feathers-memory": "^2.1.0",
+    "feathers-nedb": "^3.0.0",
     "helmet": "^3.9.0",
+    "nedb": "^1.8.0",
     "serve-favicon": "^2.4.5",
     "winston": "^2.3.1"
   },

@@ -1,57 +1,30 @@
-# node-admin
+# Alinex Admin Server
 
-> REST Server
+> REST Server for Admin Panel
 
-## About
+## Next steps
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+- better logging with date
+- asyncron encryption
 
-## Getting Started
+## Technologies
 
-Getting up and running is as easy as 1, 2, 3.
+- [ExpressJS](http://expressjs.com/de/) as webserver
+- [Feathers](https://feathersjs.com/) REST and realtime API
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/node-admin; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
 
 ## License
 
-Copyright (c) 2016
+(C) Copyright 2018 Alexander Schilling
 
-Licensed under the [MIT license](LICENSE).
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+>  <https://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
