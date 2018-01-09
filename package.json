@@ -32,10 +32,11 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
+    "dev": "nodemon src/",
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive --exit"
+    "mocha": "mocha test/ --recursive --exit",
+    "start": "node src/"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.1",
@@ -58,6 +59,7 @@
   "devDependencies": {
     "eslint": "^4.14.0",
     "mocha": "^4.0.1",
+    "nodemon": "^1.14.9",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }
