@@ -4,7 +4,7 @@
 const logger = require('winston');
 
 // To see more detailed messages, uncomment the following line
-logger.level = 'debug';
+logger.level = 'info';
 
 module.exports = function () {
   return context => {

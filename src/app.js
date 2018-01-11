@@ -4,6 +4,7 @@ const compress = require('compression');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('winston');
+const morgan = require('morgan');
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
@@ -23,6 +24,7 @@ const app = express(feathers());
 // Load app configuration
 app.configure(configuration());
 // Enable CORS, security, compression, favicon and body parsing
+app.use(morgan('combined'));
 app.use(cors());
 app.use(helmet());
 app.use(compress());
