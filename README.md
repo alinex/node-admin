@@ -4,13 +4,23 @@
 
 ## Next steps
 
-- better logging with date
 - asyncron encryption
+
+## Features
+
+- stateless using simple Java Web Token with asymetric keys for authentication
+- websocket (Realtime API) or HTTP REST
+- service oriented architecture
+- NodeJS 8
+- server validation
+- multiple database support
+- logging events
 
 ## Technologies
 
 - [ExpressJS](http://expressjs.com/de/) as webserver
 - [Feathers](https://feathersjs.com/) REST and realtime API
+  - [Authentication](https://docs.feathersjs.com/api/authentication/server.html)
 
 
 ## License
