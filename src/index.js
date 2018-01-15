@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-const logger = require('winston');
 const app = require('./app');
+const logger = require('./logger');
+
 const port = app.get('port');
 const server = app.listen(port);
 
 process.on('unhandledRejection', (reason, p) =>
-  logger.error('Unhandled Rejection at: Promise ', p, reason)
+  logger.error('Unhandled Rejection at: Promise ', p, ' reason: ', reason)
 );
 
 server.on('listening', () =>
