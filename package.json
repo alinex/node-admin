@@ -51,8 +51,9 @@
     "cors": "^2.8.4",
     "feathers-memory": "^2.1.0",
     "feathers-nedb": "^3.0.0",
+    "feathers-profiler": "^0.1.5",
+    "feathers-swagger": "^0.6.0",
     "helmet": "^3.9.0",
-    "morgan": "^1.9.0",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.4.5",
     "winston": "^2.3.1"

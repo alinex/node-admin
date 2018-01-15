@@ -4,19 +4,17 @@ const compress = require('compression');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('winston');
-const morgan = require('morgan');
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
-
+const { profiler }  = require('feathers-profiler');
 
 const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./app.hooks');
 const channels = require('./channels');
-
 const authentication = require('./authentication');
 
 const app = express(feathers());
@@ -24,7 +22,6 @@ const app = express(feathers());
 // Load app configuration
 app.configure(configuration());
 // Enable CORS, security, compression, favicon and body parsing
-app.use(morgan('combined'));
 app.use(cors());
 app.use(helmet());
 app.use(compress());
@@ -45,6 +42,8 @@ app.configure(authentication);
 app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
+
+app.configure(profiler({ stats: 'detail' })); // must be configured after all services
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound());

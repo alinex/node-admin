@@ -21,6 +21,7 @@
 - [ExpressJS](http://expressjs.com/de/) as webserver
 - [Feathers](https://feathersjs.com/) REST and realtime API
   - [Authentication](https://docs.feathersjs.com/api/authentication/server.html)
+  - [Logging](https://github.com/feathers-plus/feathers-profiler)
 
 
 ## License
