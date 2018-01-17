@@ -20,7 +20,7 @@
       }
 
       main {
-        margin-top: 100px;
+        margin-top: 60px;
         padding: 20px;
       }
 
@@ -47,6 +47,7 @@
         margin-top: 20px;
       }
       button {
+        margin: 5px 1px;
         color: #fff;
         cursor: pointer;
         padding: 0 16px;
@@ -63,14 +64,9 @@
       }
 
       footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 20px;
+        padding-top: 60px;
       }
       footer p {
-        font-weight: 300;
         font-size: 1.0em;
       }
     </style>
@@ -81,12 +77,16 @@
       <h1 class="center-text">Administration Panel</h1>
       <h2 class="center-text">Server</h2>
       <p class="center-text buttons">
-        <button class="primary" onclick="window.location.href=''">Open Client</a></button>
+        <button class="primary" onclick="window.location.href=''">Web Client</a></button>
+        <button class="secondary" onclick="window.location.href='/desktop-client'">Desktop Client</a></button>
+        <br />
         <button class="secondary" onclick="window.location.href='/swagger'">API Docs</a></button>
         <button class="secondary" onclick="window.location.href='/logtail'">Logfile</a></button>
       </h2>
       <footer>
-        <p class="center-text">This is the data server, which should not be accessed directly. Use Frontend Panel instead.</p>
+        <p class="center-text">You may also use the <strong>Alinex Admin</strong> app <br />from Google Play Store or Apple Store.
+        <br /><em>(available soon)</em></p>
+
       </footer>
     </main>
   </body>
