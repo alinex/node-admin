@@ -1,4 +1,3 @@
 {
-  "host": "node-admin-app.feathersjs.com",
-  "port": "PORT"
+  "host": "admin-server.alinex.de"
 }
