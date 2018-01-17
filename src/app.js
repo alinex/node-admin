@@ -22,6 +22,7 @@ const app = express(feathers());
 
 // Load app configuration
 app.configure(configuration());
+app.set('trust proxy', 'loopback');
 // Enable CORS, security, compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());

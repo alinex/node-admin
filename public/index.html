@@ -31,9 +31,35 @@
         margin-bottom: 8px;
       }
 
+      h1 {
+        color: #f0ad4e;
+        font-size: 30px;
+        font-weight: bold;
+      }
       h2 {
-        font-size: 2em;
-        font-weight: 100;
+        padding-top: 20px;
+        color: #cccccc;
+        font-size: 90px;
+        font-weight: 900;
+      }
+
+      .buttons {
+        margin-top: 20px;
+      }
+      button {
+        color: #fff;
+        cursor: pointer;
+        padding: 0 16px;
+        font-weight: 900;
+        min-height: 36px;
+        font-size: 14px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.2), 0 2px 2px rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12);
+      }
+      .primary {
+        background: #f0ad4e;
+      }
+      .secondary {
+        background: #337ab7;
       }
 
       footer {
@@ -43,29 +69,21 @@
         right: 0;
         padding: 20px;
       }
-
       footer p {
         font-weight: 300;
         font-size: 1.0em;
-      }
-
-      a {
-        color: #31D8A0;
-        text-decoration: none;
-      }
-
-      a:hover,
-      a:focus {
-        color: #31D8A0;
       }
     </style>
   </head>
   <body>
     <main class="container">
       <img class="logo" src="alinex-logo.png" alt="Alinex Logo">
-      <h2 class="center-text">Administrator</h2>
-      <h2 class="center-text" style="padding-top:50px"><a href="">Frontend Panel</a></h2>
-      <h2 class="center-text"><a href="/swagger">API Documentation</a></h2>      
+      <h1 class="center-text">Administration Panel</h1>
+      <h2 class="center-text">Server</h2>
+      <p class="center-text buttons">
+        <button class="primary" onclick="window.location.href=''">Open Client</a></button>
+        <button class="secondary" onclick="window.location.href='/swagger'">API (Swagger)</a></button>
+      </h2>
       <footer>
         <p class="center-text">This is the data server, which should not be accessed directly. Use Frontend Panel instead.</p>
       </footer>
