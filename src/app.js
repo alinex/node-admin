@@ -58,7 +58,10 @@ app.use(expressWinston.logger({
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound());
-app.use(express.errorHandler({ logger }));
+app.use(express.errorHandler({
+  logger,
+  public: path.join(app.get('public'), 'error')
+}));
 
 app.hooks(appHooks);
 
