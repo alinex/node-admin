@@ -9,7 +9,7 @@ module.exports = function (app) {
   app.configure(swagger);
   app.configure(logtail);
   app.configure(users);
-  app.configure(todos);
-  app.configure(secure);
+  // app.configure(todos);
+  // app.configure(secure);
   app.configure(messages);
 };

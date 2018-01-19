@@ -14,10 +14,41 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/users', createService(options));
+  const users = createService(options);
+  // Describe API for swagger
+  users.docs = {
+    description: 'Basic service to get the users to be used for accessing this application',
+    definitions: {
+      users: {
+        "type": "object",
+        "required": [ "email", "password" ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email address as unique identifier"
+          },
+          "password": {
+            "type": "string",
+            "description": "Secret password (make it unguessable)"
+          },
+          "_id": {
+            "type": "string",
+            "description": "The id of the user"
+          }
+        }
+      },
+      'users list': {
+        type: 'array',
+        items: {
+          $ref: '#/definitions/users'
+        }
+      }
+    }
+  };
+  // add service
+  app.use('/users', users);
 
   // Get our initialized service so that we can register hooks and filters
   const service = app.service('users');
-
   service.hooks(hooks);
 };
