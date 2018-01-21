@@ -1,5 +1,5 @@
 module.exports = {
-  description: "A service to send and receive messages",
+  description: 'A service to send and receive messages',
   definitions: {
     messages: {
       type: 'object',
@@ -9,11 +9,11 @@ module.exports = {
       properties: {
         text: {
           type: 'string',
-          description: "The message text"
+          description: 'The message text'
         },
         userId: {
           type: 'string',
-          description: "The id of the user that sent the message"
+          description: 'The id of the user that sent the message'
         }
       }
     },

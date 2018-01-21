@@ -17,7 +17,7 @@ module.exports = function (app) {
 
   // Initialize our service with any options it requires
   const users = createService(options);
-  users.docs = api
+  users.docs = api;
   app.use('/users', users);
 
   // Get our initialized service so that we can register hooks and filters

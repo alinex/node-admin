@@ -1,6 +1,6 @@
 module.exports = {
   // Describe API for swagger
-  description: "Basic service to get the users to be used for accessing this application",
+  description: 'Basic service to get the users to be used for accessing this application',
   definitions: {
     users: {
       type: 'object',
@@ -8,16 +8,16 @@ module.exports = {
       properties: {
         email: {
           type: 'string',
-          description: "Email address as unique identifier",
+          description: 'Email address as unique identifier',
           example: 'info@alinex.de'
         },
         password: {
           type: 'string',
-          description: "Secret password (make it unguessable)"
+          description: 'Secret password (make it unguessable)'
         },
         _id: {
           type: 'string',
-          description: "The id of the user"
+          description: 'The id of the user'
         }
       }
     },

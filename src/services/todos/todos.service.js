@@ -18,14 +18,14 @@ module.exports = function (app) {
     description: 'A service to send and receive messages',
     definitions: {
       messages: {
-        "type": "object",
-        "required": [
-          "title"
+        'type': 'object',
+        'required': [
+          'title'
         ],
-        "properties": {
-          "title": {
-            "type": "string",
-            "description": "The message text"
+        'properties': {
+          'title': {
+            'type': 'string',
+            'description': 'The message text'
           }
         }
       }

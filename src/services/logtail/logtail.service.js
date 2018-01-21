@@ -12,7 +12,7 @@ const convert = new ansi2html({
 module.exports = function (app) {
 
   app.get('/logtail', function(req, res) {
-  	res.header('Content-Type','text/html;charset=utf-8');
+    res.header('Content-Type','text/html;charset=utf-8');
     res.write(`<html>
       <head>
         <title>Logtail - Admin Panel</title>
@@ -22,18 +22,18 @@ module.exports = function (app) {
       <body>
         <h1>Logtail</h1>
         <pre>\n`);
-    tail = spawn('sh', ['-c', 'tail -n 15 -f ./logs/*']);
+    const tail = spawn('sh', ['-c', 'tail -n 15 -f ./logs/*']);
     tail.stdout.on('data', function(data) {
-  		res.write(convert.toHtml(data.toString("utf8"))
+      res.write(convert.toHtml(data.toString('utf8'))
         .replace(/(==> .*? <==)/g, '<h3>$1</h3>'));
       res.flush();
     });
-  	tail.stderr.on('data', function(data) {
-  		console.error('stderr: ' + convert.toHtml(data));
-  	});
-  	tail.on('exit', function(code) {
-  		res.end();
-  	});
+    tail.stderr.on('data', function(data) {
+      console.error('stderr: ' + convert.toHtml(data)); // eslint-disable-line no-console
+    });
+    tail.on('exit', function() {
+      res.end();
+    });
   });
 
 };

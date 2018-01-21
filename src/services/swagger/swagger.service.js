@@ -29,5 +29,5 @@ module.exports = function (app) {
         bearerAuth: [] // use the same name as above
       }
     ]
-  }))
+  }));
 };
