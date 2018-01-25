@@ -15,13 +15,33 @@
         color: #333;
       }
 
+      html {
+        background: url(background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
       .center-text {
         text-align: center;
       }
 
       main {
-        margin-top: 60px;
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+      .page {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         padding: 20px;
+        border: 3px solid #aaa;
+        border-radius: 40px;
+        background: #eee;
+        opacity: 0.8;
       }
 
       img.logo {
@@ -73,6 +93,7 @@
   </head>
   <body>
     <main class="container">
+      <div class="page">
       <img class="logo" src="alinex-logo.png" alt="Alinex Logo">
       <h1 class="center-text">Administration Panel</h1>
       <h2 class="center-text">Server</h2>
@@ -86,8 +107,8 @@
       <footer>
         <p class="center-text">You may also use the <strong>Alinex Admin</strong> app <br />from Google Play Store or Apple Store.
         <br /><em>(available soon)</em></p>
-
       </footer>
+    </div>
     </main>
   </body>
 </html>
