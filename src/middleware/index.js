@@ -1,4 +1,9 @@
-module.exports = function (app) { // eslint-disable-line no-unused-vars
-  // Add your custom middleware here. Remember, that
-  // in Express the order matters
+const logtail = require('./logtail');
+const swagger = require('./swagger');
+const authentication = require('./authentication');
+
+module.exports = function (app) {
+  app.configure(authentication);
+  app.configure(logtail);
+  app.configure(swagger);
 };
