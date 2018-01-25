@@ -29,7 +29,7 @@ module.exports = function (app) {
       res.flush();
     });
     tail.stderr.on('data', function(data) {
-      console.error('stderr: ' + convert.toHtml(data)); // eslint-disable-line no-console
+      console.error('stderr: ' + convert.toHtml(data.toString('utf8'))); // eslint-disable-line no-console
     });
     tail.on('exit', function() {
       res.end();
