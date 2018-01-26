@@ -3,6 +3,7 @@ module.exports = {
   definitions: {
     'info list': {
       type: 'array',
+      required: [ 'group', 'name', 'value' ],
       items: {
         type: 'object',
         properties: {

@@ -3,9 +3,7 @@ module.exports = {
   definitions: {
     messages: {
       type: 'object',
-      required: [
-        'text'
-      ],
+      required: [ 'text' ],
       properties: {
         text: {
           type: 'string',
