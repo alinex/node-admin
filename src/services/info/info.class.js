@@ -1,6 +1,6 @@
 const os = require('os')
-const usage = require('usage');
-const util = require('util');
+const usage = require('usage')
+const util = require('util')
 
 const getUsage = util.promisify(usage.lookup)
 

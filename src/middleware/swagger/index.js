@@ -1,7 +1,7 @@
-const path = require('path');
-const swagger = require('feathers-swagger');
+const path = require('path')
+const swagger = require('feathers-swagger')
 
-const pjson = require('../../../package.json');
+const pjson = require('../../../package.json')
 
 module.exports = function (app) {
 
@@ -29,5 +29,5 @@ module.exports = function (app) {
         bearerAuth: [] // use the same name as above
       }
     ]
-  }));
-};
+  }))
+}

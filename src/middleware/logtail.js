@@ -1,5 +1,5 @@
-const spawn = require('child_process').spawn;
-const ansi2html = require('ansi-to-html');
+const spawn = require('child_process').spawn
+const ansi2html = require('ansi-to-html')
 
 const convert = new ansi2html({
   fg: '#000',
@@ -7,13 +7,13 @@ const convert = new ansi2html({
   newline: false,
   escapeXML: false,
   stream: false
-});
+})
 
 module.exports = function (app) {
 
   app.get('/logtail', function(req, res) {
-    res.header('Content-Type','text/html;charset=utf-8');
-    res.header('Transfer-Encoding', 'chunked');
+    res.header('Content-Type','text/html;charset=utf-8')
+    res.header('Transfer-Encoding', 'chunked')
     res.write(`<html>
       <head>
         <title>Logtail - Admin Panel</title>
@@ -22,19 +22,19 @@ module.exports = function (app) {
       </head>
       <body>
         <h1>Logtail</h1>
-        <pre>\n`);
-    const tail = spawn('sh', ['-c', 'tail -n 15 -f ./logs/*']);
+        <pre>\n`)
+    const tail = spawn('sh', ['-c', 'tail -n 15 -f ./logs/*'])
     tail.stdout.on('data', function(data) {
       res.write(convert.toHtml(data.toString('utf8'))
-        .replace(/(==> .*? <==)/g, '<h3>$1</h3>'));
-      res.flush();
-    });
+        .replace(/(==> .*? <==)/g, '<h3>$1</h3>'))
+      res.flush()
+    })
     tail.stderr.on('data', function(data) {
-      console.error('stderr: ' + convert.toHtml(data.toString('utf8'))); // eslint-disable-line no-console
-    });
+      console.error('stderr: ' + convert.toHtml(data.toString('utf8'))) // eslint-disable-line no-console
+    })
     tail.on('exit', function() {
-      res.end();
-    });
-  });
+      res.end()
+    })
+  })
 
-};
+}

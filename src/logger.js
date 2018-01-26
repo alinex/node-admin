@@ -1,7 +1,7 @@
-const winston = require('winston');
-const wcf = require('winston-console-formatter');
+const winston = require('winston')
+const wcf = require('winston-console-formatter')
 
-const { formatter, timestamp } = wcf({ meta: false });
+const { formatter, timestamp } = wcf({ meta: false })
 
 const logger = new (winston.Logger)({
   transports: [
@@ -12,6 +12,6 @@ const logger = new (winston.Logger)({
       timestamp
     })
   ]
-});
+})
 
-module.exports = logger;
+module.exports = logger

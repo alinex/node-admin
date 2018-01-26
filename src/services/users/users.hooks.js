@@ -1,10 +1,10 @@
-const { authenticate } = require('@feathersjs/authentication').hooks;
+const { authenticate } = require('@feathersjs/authentication').hooks
 
 const {
   hashPassword, protect
-} = require('@feathersjs/authentication-local').hooks;
+} = require('@feathersjs/authentication-local').hooks
 
-const gravatar = require('../../hooks/gravatar');
+const gravatar = require('../../hooks/gravatar')
 
 module.exports = {
   before: {
@@ -40,4 +40,4 @@ module.exports = {
     patch: [],
     remove: []
   }
-};
+}
