@@ -6,6 +6,10 @@ module.exports = {
       items: {
         type: 'object',
         properties: {
+          group: {
+            type: 'string',
+            description: 'Setting group name'
+          },
           name: {
             type: 'string',
             description: 'The name of the setting'
