@@ -13,11 +13,12 @@ module.exports = function (app) {
 
   app.get('/logtail', function(req, res) {
     res.header('Content-Type','text/html;charset=utf-8');
+    res.header('Transfer-Encoding', 'chunked');
     res.write(`<html>
       <head>
         <title>Logtail - Admin Panel</title>
         <link rel="stylesheet" type="text/css" href="/logtail.css" />
-        <meta http-equiv="refresh content="5">
+        <meta http-equiv="refresh" content="5">
       </head>
       <body>
         <h1>Logtail</h1>
