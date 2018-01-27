@@ -1,6 +1,8 @@
 const os = require('os')
 const usage = require('usage')
 const util = require('util')
+const { sorter, select, filterQuery, _ } = require('@feathersjs/commons')
+const sift = require('sift')
 
 const getUsage = util.promisify(usage.lookup)
 
@@ -62,7 +64,25 @@ class Service {
     const packageInfo = require('../../../package.json')
     data.push({group: 'node', name: 'alinex server version', value: packageInfo.version})
 
-    return data
+    // filter collected data
+    const { query, filters } = filterQuery(params.query || {})
+    data = sift(query, data)
+    const total = data.length
+    if (filters.$sort) {
+      data.sort(this.sorter(filters.$sort))
+    }
+    if (filters.$skip) {
+      data = data.slice(filters.$skip)
+    }
+    if (typeof filters.$limit !== 'undefined') {
+      data = data.slice(0, filters.$limit)
+    }
+    return Promise.resolve({
+      total,
+      limit: filters.$limit,
+      skip: filters.$skip || 0,
+      data: select(params)(data)
+    })
   }
 
 }

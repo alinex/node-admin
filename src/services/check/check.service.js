@@ -14,6 +14,7 @@ module.exports = function (app) {
 
   // Initialize our service with any options it requires
   const check = createService(options)
+  check.id = 'check'
   check.docs = api
   app.use('/check', check)
 

@@ -1,5 +1,6 @@
 module.exports = {
-  description: 'A service to check that everything works fine.',
+  description: 'Check that everything works fine on the server.',
+  idType: 'string',
   definitions: {
     check: {
       type: 'object',
