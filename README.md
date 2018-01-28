@@ -234,10 +234,90 @@ To only retrieve the fields 'name' and 'value' but not the group call:
       }
     });
 
-
-
-
 ### Get
+
+Retrieve a single resource from the service by its ID:
+
+    GET /messages/1
+
+    app.service('messages').get(1);
+
+`$select` allows to pick which fields to include in the record:
+
+    GET /messages/1?$select[]=text
+
+    app.service('messages').get(1, {
+      query: {
+        $select: [ 'text' ]
+      }
+    });
+
+### Create
+
+Create a new resource with data.
+
+    POST /messages
+    { "text": "I really have to iron" }
+
+    app.service('messages').create(
+      { "text": "I really have to iron" }
+    );
+
+You may also create multiple records in one call:
+
+    POST /messages
+    [
+      { "text": "I really have to iron" },
+      { "text": "Do laundry" }
+    ]
+
+    app.service('messages').create([  
+      { "text": "I really have to iron" },
+      { "text": "Do laundry" }
+    ]);
+
+### Update
+
+Completely replace a single or multiple resources.
+
+Given an ID the specified record will be updated:
+
+    PUT /messages/2
+    { "text": "I really have to do laundry" }
+
+    app.service('messages').update([  
+      { "text": "I really have to do laundry" }
+    ]);
+
+### Patch
+
+Merge the existing data of a single or multiple resources with the new data.
+
+    PATCH /messages/2
+    { "read": true }
+
+    Will call messages.patch(2, { "read": true }, {}) on the server. When no id is given by sending the request directly to the endpoint something like:
+
+    PATCH /messages?complete=false
+    { "complete": true }
+
+    Will call messages.patch(null, { complete: true }, { query: { complete: 'false' } }) on the server to change the status for all read messages.
+
+    This is supported out of the box by the Feathers database adapters
+    remove
+
+    Remove a single or multiple resources:
+
+    DELETE /messages/2?cascade=true
+
+    Will call messages.remove(2, { query: { cascade: 'true' } }).
+
+    When no id is given by sending the request directly to the endpoint something like:
+
+    DELETE /messages?read=true
+
+    Will call messages.remove(null, { query: { read: 'true' } }) to delete all read messages.
+
 
 
 ### Authentication
