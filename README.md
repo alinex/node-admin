@@ -102,13 +102,145 @@ Most services contain three files:
     xxx.hooks.js        # linking to hook scripts
     xxx.api.js          # API documentation (used by swagger)
 
-__Core Services__
+To have a quick look what is going on, you may call the `/logtail` service to
+check the last lines in the log.
 
-Three core services are already included:
+## REST API
 
-1. __swagger__ includes the [Swagger](https://swagger.io/) API documentation with test possibilities
-2. __logtail__ includes a web tail to display the servers last log lines
-3. __users__ a real service which is used for authentication, too
+The concrete API is displayed through the included [Swagger](https://swagger.io/) API documentation which you can access through the `/swagger` URL.
+
+The server may be called through plain HTTP Requests or using the Feathers Client through Socket.io. The following description shows both types.
+
+### Find
+
+Retrieves a list of all matching resources from the service:
+
+    GET /info
+
+    app.service('info').find();
+
+#### Filtering
+
+You can also send additional filtering constraints on specific field values.
+To get only records with 'group' equal 'node':
+
+    GET /info?group=node
+
+    app.service('info').find({
+      query: {
+        group: 'node'
+      }
+    });
+
+You may also use any of the built-in find operands ($le, $lt, $ne, $eq, $in, etc.) the general format is as follows.
+
+| Operand | Usage | Comment |
+| ------- | ----- | ------- |
+| -       | `field: value` | Simple equality |
+| `$ne`   | `field: {$ne: value}` | Field is not equal value |
+| `$in`   | `field: {$in: [value, ...]}` | In list of values |
+| `$nin`  | `field: {$nin: [value, ...]}` | Not in list of values |
+| `$lt`   | `field: {$lt: value}` | Field lower than given value |
+| `$lte`  | `field: {$lt: value}` | Field lower or equal than given value |
+| `$gt`   | `field: {$lt: value}` | Field greater than given value |
+| `$lte`  | `field: {$lt: value}` | Field greater or equal than given value |
+
+For example, to find all records which are not in group 'node':
+
+    GET /info?name[$ne]=node
+
+    app.service('info').find({
+      query: {
+        name: {
+          $ne: 'node'
+        }
+      }
+    });
+
+You can also specify multiple fields which habe to be all matching the defined parameters.
+Thats like an _and_ search. To make alternative groups of restrictions use `$or`:
+
+    GET /info?$or[0][group][$ne]=node&$or[1][name]=cpu
+
+    app.service('info').find({
+      query: {
+        $or: [
+          { group: { $ne: 'node' } },
+          { name: 'cpu' }
+        ]
+      }
+    });
+
+#### Limit
+
+Most services support pagination here with the additional parameters. If nothing is
+given the preconfigured default will be used.
+
+`$limit` will return only the number of results you specify.
+Retrieves the first ten values:
+
+    GET /info?$limit=10
+
+    app.service('info').find({
+      query: {
+        $limit: 10
+      }
+    });
+
+If you want to get only the number of records you may also set `$limit` to `0`.
+This ensures that no record is retrieved but you get the meta info like totalmemin the returned page object.
+
+#### Offset (skip)
+
+`$skip` will skip the specified number of results. If you skip 2 records the result
+will start with record number 3, so to show record 3 and 4:
+
+    GET /info?$limit=2&$skip=2
+
+    app.service('info').find({
+      query: {
+        $limit: 2,
+        $skip: 2
+      }
+    });
+
+#### Sorting
+
+`$sort` will sort based on the object you provide. It can contain a list of properties
+by which to sort mapped to the order (1 ascending, -1 descending).
+
+    /info?$sort[name]=1
+
+    app.service('info').find({
+      query: {
+        $sort: {
+          name: 1
+        }
+      }
+    });
+
+
+#### Select columns
+
+`$select` allows to pick which fields to include in the result.
+
+To only retrieve the fields 'name' and 'value' but not the group call:
+
+    GET /info?$select[]=name&$select[]=value
+
+    app.service('info').find({
+      query: {
+        $select: [ 'name', 'value' ]
+      }
+    });
+
+
+
+
+### Get
+
+
+### Authentication
 
 
 ## License

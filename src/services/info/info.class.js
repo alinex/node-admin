@@ -1,7 +1,7 @@
 const os = require('os')
 const usage = require('usage')
 const util = require('util')
-const { sorter, select, filterQuery, _ } = require('@feathersjs/commons')
+const { sorter, select, filterQuery } = require('@feathersjs/commons')
 const sift = require('sift')
 
 const getUsage = util.promisify(usage.lookup)
@@ -66,10 +66,11 @@ class Service {
 
     // filter collected data
     const { query, filters } = filterQuery(params.query || {})
+    console.log(query, filters)
     data = sift(query, data)
     const total = data.length
     if (filters.$sort) {
-      data.sort(this.sorter(filters.$sort))
+      data.sort(sorter(filters.$sort))
     }
     if (filters.$skip) {
       data = data.slice(filters.$skip)
