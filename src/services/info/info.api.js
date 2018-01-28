@@ -1,5 +1,29 @@
 module.exports = {
   description: 'A service to get some server information. Use it for debugging and support.',
+  find: {
+    parameters: [
+      { description: 'Number of results to return',
+        in: 'query',
+        name: '$limit',
+        type: 'integer'
+      },
+      {
+        description: 'Number of results to skip',
+        in: 'query',
+        name: '$skip',
+        type: 'integer'
+      },
+      {
+        description: 'Property to sort results ()',
+        in: 'query',
+        name: '$sort',
+        'type': 'array',
+        'items': {
+          'type': 'string'
+        },
+      }
+    ]
+  },
   definitions: {
     'info list': {
       type: 'object',
@@ -37,7 +61,7 @@ module.exports = {
             }
           }
         }
-        
+
       }
     }
   }
