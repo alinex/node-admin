@@ -16,11 +16,25 @@ module.exports = {
       {
         description: 'Property to sort results ()',
         in: 'query',
+        //name: '$sort[name]',
+        //'type': 'integer',
+        //'example': 1
         name: '$sort',
-        'type': 'array',
-        'items': {
-          'type': 'string'
+        schema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'integer',
+              example: 1
+            },
+            age: {
+              type: 'integer',
+              example: -1
+            }
+          },
         },
+        style: 'deepObject',
+        explode: true
       }
     ]
   },
