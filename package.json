@@ -56,7 +56,7 @@
     "feathers-profiler": "^0.1.5",
     "feathers-swagger": "^0.6.0",
     "helmet": "^3.10.0",
-    "mongoose": "^5.0.2",
+    "mongoose": "^5.0.3",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.4.5",
     "usage": "^0.7.1",
@@ -64,9 +64,9 @@
     "winston-console-formatter": "^1.0.0-beta.1"
   },
   "devDependencies": {
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "mocha": "^5.0.0",
-    "nodemon": "^1.14.11",
+    "nodemon": "^1.14.12",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }
