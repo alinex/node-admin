@@ -219,7 +219,6 @@ by which to sort mapped to the order (1 ascending, -1 descending).
       }
     });
 
-
 #### Select columns
 
 `$select` allows to pick which fields to include in the result.
@@ -296,29 +295,26 @@ Merge the existing data of a single or multiple resources with the new data.
     PATCH /messages/2
     { "read": true }
 
-    Will call messages.patch(2, { "read": true }, {}) on the server. When no id is given by sending the request directly to the endpoint something like:
+When no id is given patch all records or select some using query parameters:
 
     PATCH /messages?complete=false
     { "complete": true }
 
-    Will call messages.patch(null, { complete: true }, { query: { complete: 'false' } }) on the server to change the status for all read messages.
+See the description for filtering in the `find` method above.
 
-    This is supported out of the box by the Feathers database adapters
-    remove
+### Remove
 
-    Remove a single or multiple resources:
+Remove a single or multiple resources.
 
-    DELETE /messages/2?cascade=true
+If an id is given only this will be removed.
 
-    Will call messages.remove(2, { query: { cascade: 'true' } }).
+    DELETE /messages/2
 
-    When no id is given by sending the request directly to the endpoint something like:
+But you may also call it without an id and a filter definition:
 
     DELETE /messages?read=true
 
-    Will call messages.remove(null, { query: { read: 'true' } }) to delete all read messages.
-
-
+See the description for filtering in the `find` method above.
 
 ### Authentication
 
