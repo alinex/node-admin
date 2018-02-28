@@ -2,11 +2,12 @@
 
 ## Milestone 3
 
-Server and Client working together, basic technologies work.
+Server and client working together, basic technologies work.
 
 ## Milestone 4
 
 Chat application working.
+Own layout.
 
 ## Milestone 5
 

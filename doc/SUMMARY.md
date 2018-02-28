@@ -7,6 +7,7 @@
 - [Usage](usage/README.md)
 
 - [Server](server/README.md)
+  - [REST API](server/rest.md)
 
 - [Client](client/README.md)
 
