@@ -6,7 +6,9 @@
 
 - [Usage](usage/README.md)
 
-- [Development](internal/README.md)
+- [Server](server/README.md)
+
+- [Client](client/README.md)
 
 - [Roadmap](roadmap.md)
 - [Further Informations](info.md)
