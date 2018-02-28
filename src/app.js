@@ -4,6 +4,7 @@ const compress = require('compression')
 const cors = require('cors')
 const helmet = require('helmet')
 const expressWinston = require('express-winston')
+const history = require('connect-history-api-fallback')
 
 const feathers = require('@feathersjs/feathers')
 const configuration = require('@feathersjs/configuration')
@@ -27,6 +28,9 @@ app.set('trust proxy', 'loopback')
 app.use(cors())
 app.use(helmet())
 app.use(compress())
+app.use(history({
+  index: '/web/index.html'
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')))

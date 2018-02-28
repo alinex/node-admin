@@ -25,3 +25,7 @@ __Server__
 __Modules__
 - user management
 - chat application
+
+## Showcase
+
+Some example screenshots will come soon...
