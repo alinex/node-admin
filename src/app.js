@@ -9,7 +9,8 @@ const feathers = require('@feathersjs/feathers')
 const configuration = require('@feathersjs/configuration')
 const express = require('@feathersjs/express')
 const socketio = require('@feathersjs/socketio')
-const { profiler }  = require('feathers-profiler')
+const { profiler, getPending }  = require('feathers-profiler')
+const clc = require('cli-color')
 
 const logger = require('./logger')
 const middleware = require('./middleware')
@@ -29,6 +30,21 @@ app.use(compress())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')))
+// logging default HTTP calls
+app.use(expressWinston.logger({
+  winstonInstance: logger,
+  msg: 'HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}} ms',
+  statusLevels: false, // default value
+  level: function (req, res) {
+    var level = ''
+    if (res.statusCode >= 100) { level = 'info' }
+    if (res.statusCode >= 400) { level = 'warn' }
+    if (res.statusCode >= 500) { level = 'error' }
+    // Ops is worried about hacking attempts so make Unauthorized and Forbidden critical
+    if (res.statusCode == 401 || res.statusCode == 403) { level = 'critical' }
+    return level
+  }
+}))
 // Host the public folder
 app.use('/', express.static(app.get('public')))
 
@@ -44,21 +60,27 @@ app.configure(services)
 app.configure(channels)
 
 // must be configured after all services
-app.configure(profiler({ stats: 'detail' }))
-app.use(expressWinston.logger({
-  winstonInstance: logger,
-  meta: false, // optional: control whether you want to log the meta data about the request (default to true)
-  msg: '{{req._startTime}} HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms', // optional: customize the default logging message. E.g. "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
-  expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
-  colorize: true, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
-  ignoreRoute: function (req, res) { return false } // optional: allows to skip some log messages based on request and/or response
+app.configure(profiler({
+  stats: 'detail',
+  logger: {log: logger.info},
+  logMsg: function (hook) {
+    hook._log = hook._log || {}
+    const elapsed = Math.round(hook._log.elapsed / 1e5) / 10
+    const header = `${hook.params.provider.toUpperCase() || 'INTERNAL'} ${hook._log.route}::${hook.method}`
+    const trailer = `${elapsed} ms - ${getPending()} pending`
+    return `${header} ${trailer}` +
+      (hook.error ? clc.red(` - FAILED ${(hook.original || {}).type} ${hook.error.message || ''}`) : '')
+  }
 }))
 
 // Configure a middleware for 404s and the error handler
-app.use(express.notFound())
-app.use(express.errorHandler({
-  logger,
-  public: path.join(app.get('public'), 'error')
+// app.use(express.notFound())
+// app.use(express.errorHandler({
+//   logger,
+//   public: path.join(app.get('public'), 'error')
+// }))
+app.use(expressWinston.errorLogger({
+  winstonInstance: logger,
 }))
 
 app.hooks(appHooks)

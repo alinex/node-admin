@@ -39,24 +39,24 @@
     "start": "NODE_ENV=production mkdir -p logs && (node src/ | tee -a logs/access.log) 3>&1 1>&2 2>&3 | tee -a logs/error.log"
   },
   "dependencies": {
-    "@feathersjs/authentication": "^2.1.1",
+    "@feathersjs/authentication": "^2.1.2",
     "@feathersjs/authentication-jwt": "^2.0.0",
     "@feathersjs/authentication-local": "^1.1.0",
     "@feathersjs/configuration": "^1.0.2",
     "@feathersjs/errors": "^3.3.0",
     "@feathersjs/express": "^1.2.0",
-    "@feathersjs/feathers": "^3.1.2",
+    "@feathersjs/feathers": "^3.1.3",
     "@feathersjs/socketio": "^3.2.0",
     "ansi-to-html": "^0.6.4",
-    "compression": "^1.7.1",
+    "compression": "^1.7.2",
     "cors": "^2.8.4",
-    "express-winston": "^2.4.0",
+    "express-winston": "^2.5.0",
     "feathers-memory": "^2.1.0",
     "feathers-nedb": "^3.0.0",
     "feathers-profiler": "^0.1.5",
     "feathers-swagger": "^0.6.0",
     "helmet": "^3.11.0",
-    "mongoose": "^5.0.4",
+    "mongoose": "^5.0.7",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.4.5",
     "usage": "^0.7.1",
@@ -64,9 +64,9 @@
     "winston-console-formatter": "^1.0.0-beta.1"
   },
   "devDependencies": {
-    "eslint": "^4.17.0",
-    "mocha": "^5.0.0",
-    "nodemon": "^1.14.12",
+    "eslint": "^4.18.1",
+    "mocha": "^5.0.1",
+    "nodemon": "^1.15.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }

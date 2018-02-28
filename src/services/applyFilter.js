@@ -4,7 +4,7 @@ const sift = require('sift')
 module.exports = function (data, params) {
   // filter collected data
   const { query, filters } = filterQuery(params.query || {})
-  console.log(query, filters)
+  // console.log(query, filters)
   data = sift(query, data)
   const total = data.length
   if (filters.$sort) {
