@@ -62,10 +62,21 @@ class Service {
 
     const packageInfo = require('../../../package.json')
     data.push({group: 'node', name: 'alinex server version', value: packageInfo.version})
+    data.push({group: 'node', name: 'event loop lag', value: await lag()})
 
     return applyFilter(data, params)
   }
 
+}
+
+function lag() {
+  return new Promise(function(resolve) {
+    const last = process.hrtime()
+    setImmediate(function() {
+      const delta = process.hrtime(last)
+      resolve(`${delta[0]}s ${Math.round(delta[1]/1000)}ms`)
+    })
+  })
 }
 
 module.exports = function (options) {

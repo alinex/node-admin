@@ -1,17 +1,20 @@
 # Roadmap
 
-## Milestone 3
+## Milestone 3 - reached
 
 Server and client working together, basic technologies work.
 
 ## Milestone 4
 
-Chat application working.
+Check method on server
+Mongo Database
+Add Authentication.
 Own layout.
 
 ## Milestone 5
 
-Authentication added.
+Client and server validation
+Chat application working.
 
 ## Milestone 6
 
