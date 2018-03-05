@@ -1,3 +1,14 @@
+const checks = {
+  base: () => {
+    const start = new Date()
+    return {
+      status: true,
+      message: 'Base check that server is running',
+      time: new Date() - start
+    }
+  }
+}
+
 /* eslint-disable no-unused-vars */
 class Service {
   constructor (options) {
@@ -5,13 +16,11 @@ class Service {
   }
 
   async find (params) {
-    return []
+    return Object.keys(checks).map((k) => Object.assign({check: k}, checks[k]()))
   }
 
   async get (check, params) {
-    return {
-      check, status: true, message: `A new check with name: ${check}!`
-    }
+    return Object.assign({check}, checks[check]())
   }
 
 }
