@@ -1,14 +1,6 @@
-const checks = {
-  base: () => {
-    const start = new Date()
-    return {
-      status: true,
-      message: 'Base check that server is running',
-      time: new Date() - start
-    }
-  }
-}
 
+//const mongooseClient = app.get('mongooseClient')
+//console.log(mongoose.connection.readyState);
 /* eslint-disable no-unused-vars */
 class Service {
   constructor (options) {
@@ -16,11 +8,11 @@ class Service {
   }
 
   async find (params) {
-    return Object.keys(checks).map((k) => Object.assign({check: k}, checks[k]()))
+    return Object.keys(this.options.Model).map((k) => Object.assign({check: k}, this.options.Model[k]()))
   }
 
   async get (check, params) {
-    return Object.assign({check}, checks[check]())
+    return Object.assign({check}, this.options.Model[check]())
   }
 
 }

@@ -1,14 +1,17 @@
 // Initializes the `check` service on path `/check`
+const createModel = require('../../models/check.model')
 const createService = require('./check.class.js')
 const hooks = require('./check.hooks')
 const api = require('./check.api')
 
 module.exports = function (app) {
 
+  const Model = createModel(app)
   const paginate = app.get('paginate')
 
   const options = {
-    name: 'check',
+    name: 'users',
+    Model,
     paginate
   }
 
