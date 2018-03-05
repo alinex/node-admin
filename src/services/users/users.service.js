@@ -1,5 +1,5 @@
 // Initializes the `users` service on path `/users`
-const createService = require('feathers-nedb')
+const createService = require('feathers-mongoose')
 
 const createModel = require('../../models/users.model')
 const hooks = require('./users.hooks')
@@ -22,5 +22,6 @@ module.exports = function (app) {
 
   // Get our initialized service so that we can register hooks and filters
   const service = app.service('users')
+
   service.hooks(hooks)
 }

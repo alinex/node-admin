@@ -1,5 +1,5 @@
 {
-  "name": "alinex-admin-server",
+  "name": "alinex-admin",
   "description": "Alinex Admin Server",
   "version": "0.1.0",
   "private": true,
@@ -53,6 +53,7 @@
     "cors": "^2.8.4",
     "express-winston": "^2.5.0",
     "feathers-memory": "^2.1.0",
+    "feathers-mongoose": "^6.1.0",
     "feathers-nedb": "^3.0.0",
     "feathers-profiler": "^0.1.5",
     "feathers-swagger": "^0.6.0",
