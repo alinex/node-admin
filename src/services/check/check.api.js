@@ -11,6 +11,10 @@ module.exports = {
           description: 'The name of the check'
         }
       },
+      check: {
+        type: 'string',
+        description: 'short name of the check'
+      },
       status: {
         type: 'boolean',
         description: 'Flag showing if this parts works like defined'
@@ -21,7 +25,7 @@ module.exports = {
       },
       time: {
         type: 'integer',
-        description: 'Number of seconds used to check'
+        description: 'Number of milliseconds used to check'
       },
     },
     'check list': {
