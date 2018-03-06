@@ -1,6 +1,6 @@
 # Server
 
-The server part is developed in as [alinex-admin](https://github.com/alinex/node-admin) package.
+The server part is developed as [alinex-admin](https://github.com/alinex/node-admin) package.
 
 # Alinex Admin Server
 

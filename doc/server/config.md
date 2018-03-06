@@ -1,6 +1,6 @@
 # Configuration
 
-The server setup is done in `config/default.json` and `config/production.json`:
+The server setup is done in `config/default.json` and `config/production.json`. All values defined are set within the app for later use.
 
     {
       "host": "localhost",

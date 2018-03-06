@@ -6,14 +6,15 @@ Server and client working together, basic technologies work.
 
 ## Milestone 4
 
-Check method on server
-Mongo Database
-Add Authentication.
+Check method on server,
+Mongo Database,
+Add Authentication,
 Own layout.
 
 ## Milestone 5
 
-Client and server validation
+I18n support,
+Client and server validation,
 Chat application working.
 
 ## Milestone 6
@@ -26,4 +27,5 @@ Authorization checking integrated.
 
 ## Version 0.2
 
-With dialogs to define authorization rights.
+With dialogs to define authorization rights,
+Validation client + server

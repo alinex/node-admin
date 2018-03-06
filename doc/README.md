@@ -28,4 +28,10 @@ __Modules__
 
 ## Showcase
 
-Some example screenshots will come soon...
+Some example screenshots from the server:
+
+![Server Start](demo/server-start.png)
+![API Docs](demo/swagger.png)
+![Logfiles](demo/logtail.png)
+
+And from the client, coming soon...
