@@ -23,6 +23,23 @@ It also contains the hosted [Client](https://github.com/alinex/quasar-admin) whi
 
 It depends on your need. You may install it on one or multiple servers and also multiple times on one server to use multiple cpus. But then you need a load balancer before it.
 
+### Logging
+
+The server will write access logging to standard output and error logging to stderr on the calling command. But if started using `npm start` this will both piped into the log files:
+
+    logs/access.log:
+    [2018-03-06 19:40:24.223] [INFO] REST info::find 27 ms - 0 pending
+    [2018-03-06 19:40:24.246] [INFO] HTTP GET /info 200 62 ms
+    [2018-03-06 19:43:34.517] [INFO] SOCKETIO info::find 5.3 ms - 0 pending
+
+In the example above you see three different calls. The first two belongs together and are issued through a HTTP call. As the logs are written after done, the called service will be logged before the request itself. And the last example line shows the call through websockets from the web client.
+
+    log/error.log:
+    SyntaxError: Unexpected identifier
+        at createScript (vm.js:80:10)
+
+If something went wrong!
+
 ## Development
 
 Fork the repository from [Github](https://github.com/alinex/node-admin).

@@ -1,23 +1,27 @@
 // check-model.js
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient')
+  function msDiff(start) {
+    const diff = process.hrtime(start)
+    return Math.round(diff[0] * 1e9 + diff[1] / 1e3)
+  }
 
   const checks = {
     base: () => {
-      const start = new Date()
+      const start = process.hrtime()
       return {
         status: true,
         message: 'Base check that server is running',
-        time: new Date() - start
+        time: msDiff(start)
       }
     },
     mongodb: () => {
-      const start = new Date()
+      const start = process.hrtime()
       const status = mongooseClient.connection.readyState
       return {
         status: status,
         message: `Mongoose connection status: ${status}`,
-        time: new Date() - start
+        time: msDiff(start)
       }
     }
   }

@@ -4,6 +4,24 @@ The concrete API is displayed through the included [Swagger](https://swagger.io/
 
 The server may be called through plain HTTP Requests or using the Feathers Client through Socket.io. The following description shows both types.
 
+| Service | HTTP method | Path        |
+| ------- | ----------- | ----------- |
+| .find() | GET  	      | /messages   |
+| .get() 	| GET 	      | /messages/1 |
+| .create() 	| POST 	  | /messages   |
+| .update() 	| PUT 	  | /messages/1 |
+| .patch() 	  | PATCH 	| /messages/1 |
+| .remove() 	| DELETE 	| /messages/1 |
+
+To help working on the command line install:
+
+    $ npm install -g prettyjson
+
+Now you can call any REST message using curl and display it in readable form:
+
+    $ curl -sX GET http://localhost:3030/messages/ | prettyjson
+    {"total":0,"limit":10,"skip":0,"data":[]}
+
 ## Find
 
 Retrieves a list of all matching resources from the service:
