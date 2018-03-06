@@ -22,6 +22,19 @@ const mongoose = require('./mongoose')
 
 const app = express(feathers())
 
+const os = require('os')
+const ifaces = os.networkInterfaces()
+for (var dev in ifaces) {
+    // ... and find the one that matches the criteria
+    var iface = ifaces[dev].filter(function(details) {
+        return details.family === 'IPv4' && details.internal === false
+    })
+    if (iface.length > 0) {
+      app.set('ip', iface[0].address)
+      break
+    }
+}
+
 // Load app configuration
 app.configure(configuration())
 app.set('trust proxy', 'loopback')

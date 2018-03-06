@@ -11,7 +11,7 @@ module.exports = function (app) {
       description: 'This is the API documentation and can also be used to test the REST server by calling single services.',
       version: pjson.version // get version from package.json
     },
-    host: 'localhost:3030',
+    host: `${app.get('ip')}:${app.get('port')}`,
     docsPath: '/swagger',
     uiIndex: path.join(__dirname, 'swagger.html'),
     // authentication
