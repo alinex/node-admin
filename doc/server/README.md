@@ -31,8 +31,11 @@ The server will write access logging to standard output and error logging to std
     [2018-03-06 19:40:24.223] [INFO] REST info::find 27 ms - 0 pending
     [2018-03-06 19:40:24.246] [INFO] HTTP GET /info 200 62 ms
     [2018-03-06 19:43:34.517] [INFO] SOCKETIO info::find 5.3 ms - 0 pending
+    [2018-03-07 21:01:07.326] [INFO] INTERNAL users::find 8.3 ms - 1 pending
+    [2018-03-07 21:01:07.758] [INFO] SOCKETIO authentication::create 441.3 ms - 0 pending - FAILED before Invalid login
 
-In the example above you see three different calls. The first two belongs together and are issued through a HTTP call. As the logs are written after done, the called service will be logged before the request itself. And the last example line shows the call through websockets from the web client.
+In the example above you see three different calls. The first two belongs together and are issued through a HTTP call. As the logs are written after done, the called service will be logged before the request itself. And the third example line shows the call through websockets from the web client.
+And on the last lines an authentication with wrong password.
 
     log/error.log:
     SyntaxError: Unexpected identifier
