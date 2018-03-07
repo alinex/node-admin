@@ -85,7 +85,7 @@ app.configure(profiler({
   logMsg: function (hook) {
     hook._log = hook._log || {}
     const elapsed = Math.round(hook._log.elapsed / 1e5) / 10
-    const header = `${hook.params.provider.toUpperCase() || 'INTERNAL'} ${hook._log.route}::${hook.method}`
+    const header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} ${hook._log.route}::${hook.method}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
     return `${header} ${trailer}` +
       (hook.error ? clc.red(` - FAILED ${(hook.original || {}).type} ${hook.error.message || ''}`) : '')
