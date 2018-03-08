@@ -1,6 +1,4 @@
 
-//const mongooseClient = app.get('mongooseClient')
-//console.log(mongoose.connection.readyState);
 /* eslint-disable no-unused-vars */
 class Service {
   constructor (options) {
