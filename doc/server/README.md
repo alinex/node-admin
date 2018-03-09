@@ -53,6 +53,8 @@ Fork the repository from [Github](https://github.com/alinex/node-admin).
 
 Then change it to your needs.
 
+The development of the server is aimed to NodeJS 8.x supporting most ES2017 but not the module loading. It is directly used witout transpiling.
+
 ## Technologies
 
 - [ExpressJS](http://expressjs.com/de/) as webserver
