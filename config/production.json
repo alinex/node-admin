@@ -1,3 +1,4 @@
 {
+  "loglevel": "debug",
   "host": "admin-server.alinex.de"
 }

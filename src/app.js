@@ -1,4 +1,5 @@
 const path = require('path')
+const util = require('util')
 const favicon = require('serve-favicon')
 const compress = require('compression')
 const cors = require('cors')
@@ -24,6 +25,7 @@ const app = express(feathers())
 
 // Load app configuration
 app.configure(configuration())
+app.configure(logger())
 // use first ip instead of localhost on development
 if (process.env.NODE_ENV != 'production' && app.get('host') == 'localhost') {
   const os = require('os')
@@ -49,7 +51,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')))
 // logging default HTTP calls
 app.use(expressWinston.logger({
-  winstonInstance: logger,
+  winstonInstance: app.get('logger'),
   msg: 'HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}} ms',
   statusLevels: false, // default value
   level: function (req, res) {
@@ -81,14 +83,28 @@ app.configure(channels)
 // must be configured after all services
 app.configure(profiler({
   stats: 'detail',
-  logger: {log: logger.info},
+  logger: {
+    log: ({ request, params, error, response }) => {
+      const logger = app.get('logger')
+      logger.info(request)
+      if (params) logger.verbose(`Parameters:\n${params}`)
+      if (error) logger.error(error)
+      if (response) logger.verbose(`Response:\n${response}`)
+    }
+  },
   logMsg: function (hook) {
     hook._log = hook._log || {}
     const elapsed = Math.round(hook._log.elapsed / 1e5) / 10
     const header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} ${hook._log.route}::${hook.method}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
-    return `${header} ${trailer}` +
-      (hook.error ? clc.red(` - FAILED ${(hook.original || {}).type} ${hook.error.message || ''}`) : '')
+    // console.log(header, hook.data)
+    // console.log(hook.path, hook.result)
+    return {
+      request: `${header} ${trailer}`,
+      params: hook.params ? util.inspect(hook.params) : false,
+      error: (hook.error ? clc.red(`${(hook.original || {}).type} ${hook.error.message || ''}`) : false),
+      response: hook.result ? util.inspect(hook.result) : false
+    }
   }
 }))
 
@@ -99,7 +115,7 @@ app.configure(profiler({
 //   public: path.join(app.get('public'), 'error')
 // }))
 app.use(expressWinston.errorLogger({
-  winstonInstance: logger,
+  winstonInstance: app.get('logger'),
 }))
 
 app.hooks(appHooks)

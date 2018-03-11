@@ -43,6 +43,8 @@ And on the last lines an authentication with wrong password.
 
 If something went wrong!
 
+See the [configuration](config.md) for how to change the loglevel.
+
 ## Development
 
 Fork the repository from [Github](https://github.com/alinex/node-admin).

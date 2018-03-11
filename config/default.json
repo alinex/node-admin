@@ -2,6 +2,7 @@
   "host": "localhost",
   "port": 3030,
   "public": "../public/",
+  "loglevel": "debug",
   "paginate": {
     "default": 10,
     "max": 50
@@ -16,7 +17,7 @@
     "service": "users",
     "jwt": {
       "header": {
-        "typ": "access"
+        "typ": "JWT"
       },
       "audience": "https://yourdomain.com",
       "subject": "anonymous",
