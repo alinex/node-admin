@@ -1,10 +1,11 @@
 // check-model.js
 module.exports = function (app) {
-  const mongooseClient = app.get('mongooseClient')
   function msDiff(start) {
     const diff = process.hrtime(start)
     return Math.round(diff[0] * 1e9 + diff[1] / 1e3)
   }
+
+  const mongooseClient = app.get('mongooseClient')
 
   const checks = {
     base: () => {
@@ -18,9 +19,15 @@ module.exports = function (app) {
     mongodb: () => {
       const start = process.hrtime()
       const status = mongooseClient.connection.readyState
+      const statusText = [
+        'disconnected',
+        'connected',
+        'connecting',
+        'disconnecting'
+      ]
       return {
-        status: status,
-        message: `Mongoose connection status: ${status}`,
+        status: status === 1,
+        message: `Mongoose connection status: ${status} - ${statusText[status]}`,
         time: msDiff(start)
       }
     }

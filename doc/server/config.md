@@ -35,6 +35,7 @@ The logging will include:
 - 'error' - error messages
 - 'info' - each request
 - 'verbose' - parameters and response values to the requests
+- 'debug' - show request headers
 
 __public__
 

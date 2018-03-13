@@ -84,10 +84,12 @@ app.configure(channels)
 app.configure(profiler({
   stats: 'detail',
   logger: {
-    log: ({ request, params, error, response }) => {
+    log: ({ request, headers, query, data, error, response }) => {
       const logger = app.get('logger')
       logger.info(request)
-      if (params) logger.verbose(`Parameters:\n${params}`)
+      if (headers) logger.debug(`Header:\n${headers}`)
+      if (query) logger.verbose(`Parameter:\n${query}`)
+      if (data) logger.verbose(`Data:\n${data}`)
       if (error) logger.error(error)
       if (response) logger.verbose(`Response:\n${response}`)
     }
@@ -97,11 +99,11 @@ app.configure(profiler({
     const elapsed = Math.round(hook._log.elapsed / 1e5) / 10
     const header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} ${hook._log.route}::${hook.method}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
-    // console.log(header, hook.data)
-    // console.log(hook.path, hook.result)
     return {
       request: `${header} ${trailer}`,
-      params: hook.params ? util.inspect(hook.params) : false,
+      headers: hook.params.headers && Object.keys(hook.params.headers) ? util.inspect(hook.params.headers) : false,
+      query: Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,
+      data: hook.data ? util.inspect(hook.data) : false,
       error: (hook.error ? clc.red(`${(hook.original || {}).type} ${hook.error.message || ''}`) : false),
       response: hook.result ? util.inspect(hook.result) : false
     }

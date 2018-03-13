@@ -8,9 +8,11 @@ Within the router you set the `meta.title` which is used as subtitle in the tool
       component: () => import('pages/info'),
       meta: { title: 'Server Information' } },
 
-## Data Loading
+## Server Access
 
-To access server data you may add a property which is set after component is created:
+This can be done in two ways, directly through the feathers API or using the store.
+
+To access server data directly zjtough the feathers API you may add a property which is set after component is created:
 
     data: () => ({
       tableData: []
