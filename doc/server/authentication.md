@@ -5,7 +5,7 @@ To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used
 The JWT defines a compact and self-contained way for securely transmitting information between parties as a signed JSON object.
 As storage a mongo DB is used. This may be loacal.
 
-The payload may be specified within the `middleware/authentication.js`:
+The JWT payload may be specified within the `middleware/authentication.js`:
 
     app.service('authentication').hooks({
       before: {
@@ -26,6 +26,7 @@ The payload may be specified within the `middleware/authentication.js`:
       }
     })
 
+Keep in mind that the payload is sent on every request/response. So keep it as small as possible. Also the defined secret (see [configuation](config.md)) have to be larger than the payload for increased security.
 
 ## Setup
 
