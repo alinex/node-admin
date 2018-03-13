@@ -5,6 +5,28 @@ To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used
 The JWT defines a compact and self-contained way for securely transmitting information between parties as a signed JSON object.
 As storage a mongo DB is used. This may be loacal.
 
+The payload may be specified within the `middleware/authentication.js`:
+
+    app.service('authentication').hooks({
+      before: {
+        create: [
+          authentication.hooks.authenticate(config.strategies),
+          context => {
+            // make sure params.payload exists
+            context.params.payload = context.params.payload || {}
+            // merge in additional properties
+            Object.assign(context.params.payload, {
+              email: context.params.user.email
+            })
+          }
+        ],
+        remove: [
+          authentication.hooks.authenticate('jwt')
+        ]
+      }
+    })
+
+
 ## Setup
 
 As the users are stored in the mongo database you can use the `mongo` client to create your first user:

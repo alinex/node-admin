@@ -16,7 +16,15 @@ module.exports = function (app) {
   app.service('authentication').hooks({
     before: {
       create: [
-        authentication.hooks.authenticate(config.strategies)
+        authentication.hooks.authenticate(config.strategies),
+        context => {
+          // make sure params.payload exists
+          context.params.payload = context.params.payload || {}
+          // merge in additional properties
+          Object.assign(context.params.payload, {
+            email: context.params.user.email
+          })
+        }
       ],
       remove: [
         authentication.hooks.authenticate('jwt')
