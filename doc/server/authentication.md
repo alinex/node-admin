@@ -2,8 +2,81 @@
 
 To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used. This allows to use stateless server cluster and be easy to scale.
 
-The JWT defines a compact and self-contained way for securely transmitting information between parties as a signed JSON object.
-As storage a mongo DB is used. This may be loacal.
+As storage of the users a mongo DB is used.
+
+## Jason Web Token (JWT)
+
+It is defined as an open standard in [RFC 7519](https://tools.ietf.org/html/rfc7519) and defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
+
+The JWT defines a compact and self-contained way for securely transmitting information between parties as a signed JSON object consisting of three parts:
+- Header
+- Payload
+- Signature
+
+Therefore, a JWT typically looks like the following with all three parts being Base64 encoded:
+
+    xxxxx.yyyyy.zzzzz
+
+__Header__
+
+The header typically consists of two parts: the type of the token, which is JWT, and the hashing algorithm being used, such as HMAC SHA256 or RSA.
+
+    {
+      "alg": "HS256",
+      "typ": "JWT"
+    }
+
+__Payload__
+
+The second part of the token is the payload, which contains the claims. Claims are statements about the user.
+
+The JWT specification defines seven claims that can be included in a token. These are registered claim names, and they are:
+
+    iss - issuer: identifies the principal that issued the JWT
+    sub - subject: identifies the principal that is the subject of the JWT
+    aud - audience: identifies the recipients that the JWT is intended for as
+          string or array
+    exp - expirarion time: identifies the expiration time on or after which the
+          JWT MUST NOT be accepted for processing
+    nbf - not brfore: identifies the time before which the JWT MUST NOT be accepted
+          for processing
+    iat - issued at: identifies the time at which the JWT was issued
+    jti - unique identifier: provides a unique identifier for the JWT
+
+For your specific use case, you might then use what are called [public claim names](https://www.iana.org/assignments/jwt/jwt.xhtml) like:
+
+    name - full name
+    nickname - casual name
+    gender - gender    
+    email - preferred e-mail address
+
+Finally, there are private claim names, which you can use as needed.
+
+An example of payload could be:
+
+    {
+      aud: "https://yourdomain.com",
+      email: "info@alinex.de",
+      exp: 1521137648,
+      iat: 1521051248,
+      iss: "feathers",
+      jti: "5fe711a3-b2e9-4bb5-af1d-3cfaa948eb43",
+      sub: "anonymous",
+      userId: "5a9ee71276122f55a3a94796"
+    }
+
+__Signature__
+
+To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that like:
+
+    HMACSHA256(
+      base64UrlEncode(header) + "." +
+      base64UrlEncode(payload),
+      secret)
+
+The signature is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+
+## Setup the JWT payload
 
 The JWT payload may be specified within the `middleware/authentication.js`:
 
