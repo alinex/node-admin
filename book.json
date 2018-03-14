@@ -13,7 +13,7 @@
   ],
   "pluginsConfig": {
     "downloadpdf": {
-      "base": "https://www.gitbook.com/download/pdf/book/alinex/admin",
+      "base": "https://www.gitbook.com/download/pdf/book/alinex/administration-panel",
       "label": "Download PDF",
       "multilingual": false
     }
