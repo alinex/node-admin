@@ -13,6 +13,7 @@ The two main parts of the administration panel are the __client__ which is loade
 __Client__
 - universal: web application, desktop and mobile app
 - intuitive and simple interface
+- fast and easy to use
 
 __Server__
 - stateless using simple Java Web Token for authentication
