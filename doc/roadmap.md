@@ -9,6 +9,7 @@ Server and client working together, basic technologies work.
 Check method on server,
 Mongo Database,
 Add Authentication,
+Secure pages,
 Own layout.
 
 ## Milestone 5
