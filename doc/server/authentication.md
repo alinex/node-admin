@@ -74,7 +74,9 @@ To create the signature part you have to take the encoded header, the encoded pa
       base64UrlEncode(payload),
       secret)
 
-The signature is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+The signature is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way. Only the server knows the secret so no one can make a valid JWT as the server itself and only accepts his own JWT.
+
+As an example, if the JWT is changed on the way to the client or back on the next action the server will reject.
 
 ## Setup the JWT payload
 

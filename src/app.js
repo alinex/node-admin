@@ -104,7 +104,7 @@ app.configure(profiler({
       headers: hook.params.headers && Object.keys(hook.params.headers).length ? util.inspect(hook.params.headers) : false,
       query: Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,
       data: hook.data ? util.inspect(hook.data) : false,
-      error: (hook.error ? clc.red(`${(hook.original || {}).type} ${hook.error.message || ''}`) : false),
+      error: (hook.error ? clc.red(`${(hook.original || {}).type} ${hook.error ? hook.error.message : ''}`) : false),
       response: hook.result ? util.inspect(hook.result) : false
     }
   }
