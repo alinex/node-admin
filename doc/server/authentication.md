@@ -4,7 +4,7 @@ To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used
 
 As storage of the users a mongo DB is used.
 
-## Jason Web Token (JWT)
+## Json Web Token (JWT)
 
 It is defined as an open standard in [RFC 7519](https://tools.ietf.org/html/rfc7519) and defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 

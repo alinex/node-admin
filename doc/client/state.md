@@ -159,3 +159,72 @@ As before you may use `mapActions` here.
 Due to using a single state tree, all state of our application is contained inside one big object. However, as our application grows in scale, the store can get really bloated.
 
 To help with that, Vuex allows us to divide our store into modules. Each module can contain its own state, mutations, actions, getters, and even nested modules.
+
+## Feathers integration
+
+To use feathers client to connect services with the server and do authentication we use [feathers-vuex](https://github.com/feathers-plus/feathers-vuex). 
+
+This is done by setting the store like:
+
+    import Vue from 'vue'
+    import Vuex from 'vuex'
+    import feathersVuex from 'feathers-vuex'
+    import feathersClient from '../feathers'
+
+    const { service, auth } = feathersVuex(feathersClient, { idField: '_id' })
+
+    Vue.use(Vuex)
+
+    const store = new Vuex.Store({
+      plugins: [
+        service('users'),
+        auth({ userService: 'users' })
+      ]
+    })
+
+    export default store
+
+As you see we connect the `users` service and initialize the authentication together with the users service.
+
+To login or logout you should use the actions from the store:
+
+    methods: {
+      ...mapActions('auth', ['authenticate', 'logout'])
+    }
+
+Call login like:
+
+    this.authenticate({
+      strategy: 'local',
+      email: 'info@alinex.de',
+      password: 'secret'
+    })
+      .catch(() => {
+        console.log(this.$store.state.auth.errorOnAuthenticate.message)
+      })
+
+This will set the store with the following data:
+
+    auth:
+      accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTllZTcxMjc2MTIyZjU1YTNhOTQ3OTYiLCJlbWFpbCI6ImluZm9AYWxpbmV4LmRlIiwiaWF0IjoxNTIxMzIxMzY3LCJleHAiOjE1MjE0MDc3NjcsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjY5YmEzMmFlLWZjZTEtNGU1ZC1hZDc2LTE5YjhhMjQwYzRlOSJ9.GNHPQhp9_H1EJb8rhamprBQr9ACSgFcmp5n3gIWKQbI"
+      errorOnAuthenticate: null
+      errorOnLogout: null
+      isAuthenticatePending: false
+      isLogoutPending: false
+      payload:
+        aud: "https://yourdomain.com"
+        email: "info@alinex.de"
+        exp: 1521407767
+        iat: 1521321367
+        iss: "feathers"
+        jti: "69ba32ae-fce1-4e5d-ad76-19b8a240c4e9"
+        sub: "anonymous"
+        userId: "5a9ee71276122f55a3a94796"
+      user:
+        __v:0
+        _id: "5a9ee71276122f55a3a94796"
+        createdAt: "2018-03-06T19:08:02.271Z"
+        email: "info@alinex.de"
+        updatedAt: "2018-03-06T19:08:02.271Z"
+        userService: "users"
+
