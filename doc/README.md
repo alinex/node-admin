@@ -36,3 +36,6 @@ Some example screenshots from the server:
 ![Logfiles](demo/logtail.png)
 
 And from the client, coming soon...
+
+![Client Start](demo/client-start.png)
+![Client Login](demo/client-login.png)
