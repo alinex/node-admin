@@ -1,21 +1,22 @@
 # Roadmap
 
+These are the next steps within the development, but because I do it in my free time no concrete dates are set.
+
 ## Milestone 3 - reached
 
 Server and client working together, basic technologies work.
 
-## Milestone 4
+## Milestone 4 - reached
 
 Check method on server,
 Mongo Database,
 Add Authentication,
-Secure pages,
 Own layout.
 
 ## Milestone 5
 
+Secure pages,
 I18n support,
-Client and server validation,
 Chat application working.
 
 ## Milestone 6
@@ -24,9 +25,13 @@ User Administration working.
 
 ## Milestone 7
 
-Authorization checking integrated.
+Authorization using ACL checking integrated.
 
 ## Version 0.2
 
 With dialogs to define authorization rights,
 Validation client + server
+
+## Version 0.3
+
+More applications

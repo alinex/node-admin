@@ -10,3 +10,8 @@ To get the server up and running you have to install it on a linux system:
     $ npm install -g alinex-admin
 
 After you have done this you may configure....
+
+Then start the server from it's installation directory using:
+
+    $ npm start
+

@@ -14,6 +14,7 @@ __Client__
 - universal: web application, desktop and mobile app
 - intuitive and simple interface
 - fast and easy to use
+- modular structure
 
 __Server__
 - stateless using simple Java Web Token for authentication

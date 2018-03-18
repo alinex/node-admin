@@ -12,4 +12,7 @@ Therefore it is possible to use all modern features and also import/export for m
 The client is build using the [Quasar Framework](http://quasar-framework.org) which works with the [Vue.js](https://vuejs.org) library.
 
 Additional Libraries:
-- [Vuex](https://vuex.vuejs.org/en/intro.html)
+- [FeathersJS Client](https://github.com/feathersjs/client) for server connection
+- [Vuex](https://vuex.vuejs.org/en/intro.html) for state management
+- [feathers-vuex](https://github.com/feathers-plus/feathers-vuex) to connect state to server
+- [Vuelidate](https://monterail.github.io/vuelidate/) for validation
