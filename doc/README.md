@@ -32,11 +32,11 @@ __Modules__
 
 Some example screenshots from the server:
 
-![Server Start](demo/server-start.png)
+![Server Start](demo/server.start.png)
 ![API Docs](demo/swagger.png)
 ![Logfiles](demo/logtail.png)
 
 And from the client, coming soon...
 
-![Client Start](demo/client-start.png)
-![Client Login](demo/client-login.png)
+![Client Start](demo/client.start.png)
+![Client Login](demo/client.login.png)
