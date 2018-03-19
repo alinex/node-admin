@@ -16,3 +16,4 @@ Additional Libraries:
 - [Vuex](https://vuex.vuejs.org/en/intro.html) for state management
 - [feathers-vuex](https://github.com/feathers-plus/feathers-vuex) to connect state to server
 - [Vuelidate](https://monterail.github.io/vuelidate/) for validation
+- [vue-i18n](http://kazupon.github.io/vue-i18n/en/) for app translations
