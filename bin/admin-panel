@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# move to parent directory of script
+cd $(dirname $(dirname "$(readlink -f "$0")"))
+
+# run as defined in package.json
+npm start

@@ -13,26 +13,6 @@ Dynamic assets (processed by webpack) like images.
 Pure static assets (directly copied) to the distribution directory.
 Here the `favicon.png` belongs to.
 
-## components/
-
-Components (.vue files) used in pages & layouts.
-
-## css/
-
-CSS/Stylus/Sass/... files for your app
-
-## layouts/
-
-Page layouts (.vue files) defining the structure of the page.
-
-## mixins/
-
-Code mixins (.js files) which are mixed into the component, layout or page.
-
-## pages/  
-
-Single pages (.vue files)
-
 ## plugins/
 
 app plugins (app initialization code)
@@ -44,3 +24,27 @@ Client router definition.
 ## store/
 
 Setup of the state management store.
+
+## layouts/
+
+Page layouts (.vue files) defining the structure of the page.
+
+## pages/  
+
+Single pages (.vue files)
+
+## components/
+
+Components (.vue files) used in pages & layouts.
+
+## mixins/
+
+Code mixins (.js files) which are mixed into the component, layout or page.
+
+## css/
+
+CSS/Stylus/Sass/... files for your app
+
+## i18n/
+
+General app translations.

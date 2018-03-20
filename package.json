@@ -31,6 +31,11 @@
     "node": "^8.0.0",
     "npm": ">= 3.0.0"
   },
+  "bin": {
+    "admin-panel": "./bin/admin-panel"
+  },
+  "man": "./dist/validator.1",
+  "main": "./src/index.js",  
   "scripts": {
     "dev": "mkdir -p logs && (nodemon src/ | tee logs/access.log) 3>&1 1>&2 2>&3 | tee logs/error.log",
     "test": "npm run eslint && npm run mocha",
