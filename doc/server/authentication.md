@@ -134,3 +134,4 @@ This access Token can now be used to access restricted services:
 
     $ curl -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOiIxNGtyWGJ0RnJaSTJ1VmJsIiwiaWF0IjoxNTE1NDI1NTg0LCJleHAiOjE1MTU1MTE5ODQsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjkyMGZhY2IwLWVmZTItNDc1MS1iNGJjLTYyNGFiNDNmZmRmNyJ9.x4jSVMIMpVV7j0_ei402DvckHWUcgi0xOiO9r2trY68'
       -sX GET http://localhost:3030/messages
+

@@ -37,7 +37,7 @@ The server will write access logging to standard output and error logging to std
 In the example above you see three different calls. The first two belongs together and are issued through a HTTP call. As the logs are written after done, the called service will be logged before the request itself. And the third example line shows the call through websockets from the web client.
 And on the last lines an authentication with wrong password.
 
-    log/error.log:
+    logs/error.log:
     SyntaxError: Unexpected identifier
         at createScript (vm.js:80:10)
 
@@ -59,8 +59,9 @@ The development of the server is aimed to NodeJS 8.x supporting most ES2017 but 
 
 ## Technologies
 
-- [ExpressJS](http://expressjs.com/de/) as webserver
-- [Winston](https://github.com/winstonjs/winston)
-- [Feathers](https://feathersjs.com/) REST and realtime API
-- [Authentication](https://docs.feathersjs.com/api/authentication/server.html)
-- [Profiler](https://github.com/feathers-plus/feathers-profiler)
+- [ExpressJS](http://expressjs.com/de/) - webserver
+- [Feathers](https://feathersjs.com/) - REST and realtime API
+- [Authentication](https://docs.feathersjs.com/api/authentication/server.html) - JWT support
+- [Winston](https://github.com/winstonjs/winston) - logging
+- [Profiler](https://github.com/feathers-plus/feathers-profiler) - logging
+- [mongoose](http://mongoosejs.com/) - database connection
