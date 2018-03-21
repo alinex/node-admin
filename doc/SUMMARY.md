@@ -17,8 +17,12 @@
 
 - [Client](client/README.md)
   - [Structure](client/structure.md)
-  - [State Management](client/state.md)
+  - [Layout](client/layout.md)
   - [Modules](client/modules.md)
+  - [Internationalizzation](client/i18n.md)
+  - [Server Connection](client/server.md)
+  - [State Management](client/state.md)
+  - [Store Structure](client/store.md)
 
 - [Roadmap](roadmap.md)
 - [Further Informations](info.md)

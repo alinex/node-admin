@@ -17,11 +17,11 @@ Own layout.
 
 Secure pages,
 I18n support,
-Chat application working.
+User Administration working.
 
 ## Milestone 6
 
-User Administration working.
+Chat application working.
 
 ## Milestone 7
 

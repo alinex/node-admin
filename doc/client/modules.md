@@ -6,7 +6,9 @@ Within the router you set the `meta.title` which is used as subtitle in the tool
 
     { path: 'info',
       component: () => import('pages/info'),
-      meta: { title: 'Server Information' } },
+      meta: { label: 'core.info.subtitle', public: true } },
+
+The meta data is used for the [layout](layout.md).
 
 ## Server Access
 

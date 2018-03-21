@@ -160,27 +160,6 @@ Due to using a single state tree, all state of our application is contained insi
 
 To help with that, Vuex allows us to divide our store into modules. Each module can contain its own state, mutations, actions, getters, and even nested modules.
 
-### Auth
-
-The auth module is used for authentication through login/logout processes. 
-
-It contains the following actions:
-- `authenticate({ strategy: 'local', email, password })`
-- `logout()`
-
-States are:
-- `auth.accessToken` - the encrypted JWT string
-- `auth.errorOnAuthenticate` - `Error` which occured on last login
-- `auth.errorOnLogout` - `Error` which occured on last logout
-- `auth.isAuthenticatePending` - 'true' while login in progress
-- `auth.isLogoutPending` - 'true' while logout in progress
-- `auth.payload` - JWT payload data (decrypted)
-- `auth.user` - record from the `users` service
-
-### Users
-
-This is used to access user information.
-
 ## Feathers integration
 
 To use feathers client to connect services with the server and do authentication we use [feathers-vuex](https://github.com/feathers-plus/feathers-vuex). 
@@ -248,4 +227,3 @@ This will set the store with the following data:
         email: "info@alinex.de"
         updatedAt: "2018-03-06T19:08:02.271Z"
         userService: "users"
-
