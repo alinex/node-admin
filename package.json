@@ -35,7 +35,7 @@
     "admin-panel": "./bin/admin-panel"
   },
   "man": "./dist/validator.1",
-  "main": "./src/index.js",  
+  "main": "./src/index.js",
   "scripts": {
     "dev": "mkdir -p logs && (nodemon src/ | tee logs/access.log) 3>&1 1>&2 2>&3 | tee logs/error.log",
     "test": "npm run eslint && npm run mocha",
@@ -63,7 +63,7 @@
     "feathers-profiler": "^0.1.5",
     "feathers-swagger": "^0.6.0",
     "helmet": "^3.12.0",
-    "mongoose": "^5.0.10",
+    "mongoose": "^5.0.11",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.4.5",
     "usage": "^0.7.1",
@@ -71,7 +71,7 @@
     "winston-console-formatter": "^1.0.0-beta.1"
   },
   "devDependencies": {
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "mocha": "^5.0.4",
     "nodemon": "^1.17.2",
     "request": "^2.85.0",
