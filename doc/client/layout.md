@@ -14,7 +14,7 @@ The whole application has a general 'default' layout which is used throughout mo
 
 ## Routes
 
-Within the routs the following meta data is set to make the layout working:
+Within the routes the following meta data is set to make the layout working:
 
     meta: { 
       label: 'core.info.subtitle', 
