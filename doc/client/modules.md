@@ -28,3 +28,12 @@ To access server data directly zjtough the feathers API you may add a property w
         this.$q.notify('ERROR: ' + error.message + '. Check server connection.')
       }
     }
+
+## Create Module
+
+The basic steps are:
+1. make the neccessary REST Service working
+2. add module translations under `i18n/en/...`
+3. add a router entry in `router/routes.js`
+4. add link to `components/sidebarMenu.vue`
+5. create the pages under `pages`
