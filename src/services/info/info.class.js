@@ -59,10 +59,11 @@ class Service {
     data.push({group: 'node', name: 'cpu usage (percent)', value: result.cpu})
     data.push({group: 'node', name: 'memory rss (byte)', value: result.memoryInfo.rss})
     data.push({group: 'node', name: 'memory virt (byte)', value: result.memoryInfo.vsize})
+    data.push({group: 'node', name: 'event loop lag', value: await lag()})
 
     const packageInfo = require('../../../package.json')
-    data.push({group: 'node', name: 'alinex server version', value: packageInfo.version})
-    data.push({group: 'node', name: 'event loop lag', value: await lag()})
+    data.push({group: 'app', name: 'version', value: packageInfo.version})
+    data.push({group: 'app', name: 'name', value: packageInfo.name})
 
     return applyFilter(data, params)
   }
