@@ -10,6 +10,12 @@ Within the router you set the `meta.title` which is used as subtitle in the tool
 
 The meta data is used for the [layout](layout.md).
 
+Parameters are also possible in routes using syntax from [path-to-regexp](https://github.com/pillarjs/path-to-regexp#parameters):
+
+    { path: 'users/:id',
+      component: () => import('pages/users/detail'),
+      meta: { module: 'core.users' } },
+
 ## Server Access
 
 This can be done in two ways, directly through the feathers API or using the store.
