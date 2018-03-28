@@ -24,24 +24,25 @@ class Service {
     data.push({group: 'host', name: 'memory free (bytes)', value: os.freemem()})
     data.push({group: 'host', name: 'uptime (seconds)', value: os.uptime()})
 
-    data.push({group: 'server', name: 'hostname', value: os.hostname()})
+    data.push({group: 'host', name: 'hostname', value: os.hostname()})
     const inet = os.networkInterfaces()
+    const network = []
     Object.keys(inet).forEach(function(key) {
-      const val = inet[key].map(function(v) {
-        return v.address
+      inet[key].forEach(function(v) {
+        network.push(`${key} => ${v.address}`)
       })
-      data.push({group: 'server', name: 'network ' + key, value: val})
     })
-    data.push({group: 'server', name: 'platform', value: os.platform()})
-    data.push({group: 'server', name: 'release', value: os.release()})
-    data.push({group: 'server', name: 'time', value: Date.now()})
-    data.push({group: 'server', name: 'home directory', value: os.homedir()})
-    data.push({group: 'server', name: 'temp directory', value: os.tmpdir()})
+    data.push({group: 'host', name: 'network', value: network })
+    data.push({group: 'host', name: 'platform', value: os.platform()})
+    data.push({group: 'host', name: 'release', value: os.release()})
+    data.push({group: 'host', name: 'time', value: Date.now()})
+    data.push({group: 'host', name: 'home directory', value: os.homedir()})
+    data.push({group: 'host', name: 'temp directory', value: os.tmpdir()})
     const user = os.userInfo()
-    data.push({group: 'server', name: 'user', value: user.username})
-    data.push({group: 'server', name: 'user id', value: user.uid})
-    data.push({group: 'server', name: 'user group', value: user.gid})
-    data.push({group: 'server', name: 'user home', value: user.homedir})
+    data.push({group: 'host', name: 'user', value: user.username})
+    data.push({group: 'host', name: 'user id', value: user.uid})
+    data.push({group: 'host', name: 'user group', value: user.gid})
+    data.push({group: 'host', name: 'user home', value: user.homedir})
 
     Object.keys(process.env).forEach(function(key) {
       const val = process.env[key]
@@ -62,8 +63,10 @@ class Service {
     data.push({group: 'node', name: 'event loop lag', value: await lag()})
 
     const packageInfo = require('../../../package.json')
-    data.push({group: 'app', name: 'version', value: packageInfo.version})
-    data.push({group: 'app', name: 'name', value: packageInfo.name})
+    data.push({group: 'server', name: 'version', value: packageInfo.version})
+    data.push({group: 'server', name: 'name', value: packageInfo.name})
+    data.push({group: 'server', name: 'author', value: `${packageInfo.author.name} <${packageInfo.author.email}>`})
+    data.push({group: 'server', name: 'copyright', value: packageInfo.copyright})
 
     return applyFilter(data, params)
   }
