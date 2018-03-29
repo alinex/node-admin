@@ -4,6 +4,8 @@ State management allows objects to have one or more states. As a state changes, 
 
 ![vuex](vuex.png)
 
+The basic concept is described below, but you may also visit the [Vuex Manual](https://vuex.vuejs.org/en/core-concepts.html).
+
 ## Store
 
 The store is basically a container that holds the application state. It is reactive so a change of state will also trigger the change of elements using this state. And the only way to change state is to commit mutations. This ensures every state change leaves a track-able record, and enables tooling that helps us better understand the applications.
