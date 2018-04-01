@@ -65,3 +65,4 @@ The development of the server is aimed to NodeJS 8.x supporting most ES2017 but 
 - [Winston](https://github.com/winstonjs/winston) - logging
 - [Profiler](https://github.com/feathers-plus/feathers-profiler) - logging
 - [mongoose](http://mongoosejs.com/) - database connection
+- [feathers-mongoose](https://github.com/feathersjs-ecosystem/feathers-mongoose) - Model helper

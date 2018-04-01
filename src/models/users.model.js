@@ -1,16 +1,18 @@
-// users-model.js - A mongoose model
-//
-// See http://mongoosejs.com/docs/models.html
-// for more of what you can do here.
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient')
   const users = new mongooseClient.Schema({
 
-    email: {type: String, unique: true},
+    // _id
+    // __v version id
+    email: { type: String, unique: true },
     password: { type: String },
-
+    nickname: { type: String, unique: true },
+    name: { type: String },
+    position: { type: String }
 
   }, {
+    // createdAt
+    // updatedAt
     timestamps: true
   })
 
