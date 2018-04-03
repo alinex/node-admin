@@ -4,9 +4,10 @@ const app = require('./app')
 const port = app.get('port')
 const server = app.listen(port)
 
-process.on('unhandledRejection', (reason, p) => {
+process.on('unhandledRejection', (reason) => {
+  const msg = reason.message || reason
   const logger = app.get('logger')
-  logger.error('Unhandled Rejection at: Promise ', p, ' reason: ', reason)
+  logger.error('Unhandled Promise Rejection:', msg)
 })
 
 server.on('listening', () => {

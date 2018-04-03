@@ -27,7 +27,7 @@ module.exports = function (app) {
       ]
       return {
         status: status === 1,
-        message: `Mongoose connection status: ${status} - ${statusText[status]}`,
+        message: `Mongoose connection status: ${status === 1 ? 'OK' : statusText[status] + ' from ' + app.get('mongodb')}`,
         time: msDiff(start)
       }
     }
