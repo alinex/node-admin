@@ -8,7 +8,8 @@ module.exports = function (app) {
     password: { type: String },
     nickname: { type: String, unique: true },
     name: { type: String },
-    position: { type: String }
+    position: { type: String },
+    disabled: { type: Boolean }    
 
   }, {
     // createdAt
