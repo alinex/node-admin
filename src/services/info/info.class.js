@@ -27,9 +27,15 @@ class Service {
     data.push({group: 'host', name: 'hostname', value: os.hostname()})
     const inet = os.networkInterfaces()
     const network = []
-    Object.keys(inet).forEach(function(key) {
-      inet[key].forEach(function(v) {
-        network.push(`${key} => ${v.address}`)
+    Object.keys(inet).forEach(function (key) {
+      let alias = 0
+      inet[key].forEach(function (iface) {
+        if (alias || iface.family !== 'IPv4' || iface.internal !== false) {
+          // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+          return
+        }
+        network.push(`${key} => ${iface.address}`)
+        alias++
       })
     })
     data.push({group: 'host', name: 'network', value: network })

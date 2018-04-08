@@ -190,14 +190,14 @@ You may also create multiple records in one call:
 
 Completely replace a single or multiple resources.
 
-Given an ID the specified record will be updated:
+Given an ID the specified record will be replaced:
 
     PUT /messages/2
     { "text": "I really have to do laundry" }
 
-    app.service('messages').update([  
+    app.service('messages').update(2,  
       { "text": "I really have to do laundry" }
-    ]);
+    );
 
 ## Patch
 
@@ -205,6 +205,10 @@ Merge the existing data of a single or multiple resources with the new data.
 
     PATCH /messages/2
     { "read": true }
+
+    app.service('messages').patch(2,  
+      { "read": true }
+    );
 
 When no id is given patch all records or select some using query parameters:
 
