@@ -13,11 +13,12 @@ Mongo Database,
 Add Authentication,
 Own layout.
 
-## Milestone 5
+## Milestone 5 - reached
 
 Secure pages,
 I18n support,
-User Administration working.
+CRUD working,
+User Administration.
 
 ## Milestone 6
 

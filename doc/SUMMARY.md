@@ -19,6 +19,7 @@
   - [Structure](client/structure.md)
   - [Layout](client/layout.md)
   - [Modules](client/modules.md)
+  - [Components](client/components.md)
   - [Internationalizzation](client/i18n.md)
   - [Server Connection](client/server.md)
   - [State Management](client/state.md)
