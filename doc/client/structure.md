@@ -6,7 +6,7 @@ The `src` directory contains the parts defined in the following sections.
 
 ## assets/
 
-Dynamic assets (processed by webpack) like images.
+Dynamic assets (processed by webpack) like images and bundled together.
 
 ## statics/
 
@@ -15,7 +15,7 @@ Here the `favicon.png` belongs to.
 
 ## plugins/
 
-app plugins (app initialization code)
+App plugins (app initialization code)
 
 ## router/ 
 

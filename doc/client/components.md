@@ -41,3 +41,5 @@ A component to make the elements visible only after the loading is finished and 
 You put it arround your content and add the two boolean properties:
 - `loading` - keep content away while not loaded
 - `sending` - prevent changes on content while sending data
+
+You don't need to supply both parameters, one is enough.
