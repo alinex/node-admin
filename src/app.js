@@ -84,22 +84,25 @@ app.configure(channels)
 app.configure(profiler({
   stats: 'detail',
   logger: {
-    log: ({ request, headers, query, data, error, response }) => {
+    log: ({ user, request, headers, query, data, error, response }) => {
       const logger = app.get('logger')
-      logger.info(request)
-      if (headers) logger.debug(`Header:\n${headers}`)
-      if (query) logger.verbose(`Parameter:\n${query}`)
-      if (data) logger.verbose(`Data:\n${data}`)
-      if (error) logger.error(error)
-      if (response) logger.verbose(`Response:\n${response}`)
+      logger.info(`${user} ${request}`)
+      if (headers) logger.debug(`${user} Header:\n${headers}`)
+      if (query) logger.verbose(`${user} Parameter:\n ${query}`)
+      if (data) logger.verbose(`${user} Data:\n ${data}`)
+      if (error) logger.error(`${user} ${error}`)
+      if (response) logger.verbose(`${user} Response:\n ${response}`)
     }
   },
   logMsg: function (hook) {
     hook._log = hook._log || {}
     const elapsed = Math.round(hook._log.elapsed / 1e5) / 10
-    const header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} ${hook._log.route}::${hook.method}`
+    const user = hook.params.payload ? hook.params.payload.userId : '-'
+    let header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} /${hook._log.route}/${hook.method}`
+    if (hook.id) header += `/${hook.id}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
     return {
+      user: user,
       request: `${header} ${trailer}`,
       headers: hook.params.headers && Object.keys(hook.params.headers).length ? util.inspect(hook.params.headers) : false,
       query: hook.params.query && Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,
