@@ -6,11 +6,16 @@ class Service {
   }
 
   async find (params) {
-    return Object.keys(this.options.Model).map((k) => Object.assign({check: k}, this.options.Model[k]()))
+    const list = []
+    for (const name in this.options.Model) {
+      const res = await this.options.Model[name]()
+      list.push(Object.assign({check: name}, res))
+    }
+    return list
   }
 
   async get (check, params) {
-    return Object.assign({check}, this.options.Model[check]())
+    return Object.assign({check}, await this.options.Model[check]())
   }
 
 }
