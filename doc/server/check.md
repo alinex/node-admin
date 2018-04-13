@@ -30,6 +30,6 @@ The values are:
 - __check__ - the shortname of the check which may be used to run only this
 - __status__ - boolean `1` if ok else `0`
 - __message__ - short text explaining the current status
-- __time__ - time used to run check in mycroseconds
+- __time__ - time used to run check in milliseconds
 
 To use it in Nagios you may check that there is no `status: 0` within the text. Or call a single check and use its `time` as performance data.

@@ -2,7 +2,7 @@
 module.exports = function (app) {
   function msDiff(start) {
     const diff = process.hrtime(start)
-    return Math.round(diff[0] * 1e9 + diff[1] / 1e3)
+    return Math.round(diff[0] * 1e9 + diff[1] / 1e6)
   }
 
   const checks = {
@@ -14,6 +14,7 @@ module.exports = function (app) {
         time: msDiff(start)
       }
     },
+
     baseAsync: () => new Promise((resolve) => {
       const start = process.hrtime()
       resolve({
@@ -22,6 +23,7 @@ module.exports = function (app) {
         time: msDiff(start)
       })
     }),
+
     mongo: () => new Promise((resolve) => {
       const start = process.hrtime()
       const mongooseClient = app.get('mongooseClient')
@@ -55,10 +57,11 @@ module.exports = function (app) {
         })
       })
     }),
+
     mongoUsers: () => new Promise((resolve) => {
       const start = process.hrtime()
       const userModel = require('./users.model')(app)
-      userModel.find((err) => {
+      userModel.find((err, res) => {
         if (err) {
           resolve({
             status: false,
@@ -68,7 +71,7 @@ module.exports = function (app) {
         } else {
           resolve({
             status: true,
-            message: 'Could access users',
+            message: `Found ${res.length} users`,
             time: msDiff(start)
           })
         }

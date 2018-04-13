@@ -27,8 +27,7 @@ server.on('listening', async () => {
     logger.debug(`Check ${++num}/${max}`, name)
     const res = await checks[name]()
     if (res.status) {
-      const time = res.time < 2000 ? `${res.time} µs` : `${Math.round(res.time / 1000)} ms`
-      logger.debug(`Succeded ${name} check in ${time}`)
+      logger.debug(`Succeded ${name} check in ${res.time} ms: ${res.message}`)
     } else {
       logger.error(`Failed ${name} check: ${res.message}`)
     }
