@@ -1,10 +1,10 @@
-// check-model.js
-module.exports = function (app) {
-  function msDiff(start) {
-    const diff = process.hrtime(start)
-    return Math.round(diff[0] * 1e9 + diff[1] / 1e6)
-  }
+// check/model.js
+function msDiff(start) {
+  const diff = process.hrtime(start)
+  return Math.round(diff[0] * 1e9 + diff[1] / 1e6)
+}
 
+module.exports = function (app) {
   const checks = {
     base: () => {
       const start = process.hrtime()
@@ -60,12 +60,18 @@ module.exports = function (app) {
 
     mongoUsers: () => new Promise((resolve) => {
       const start = process.hrtime()
-      const userModel = require('./users.model')(app)
+      const userModel = require('../users/model')(app)
       userModel.find((err, res) => {
         if (err) {
           resolve({
             status: false,
             message: err.message,
+            time: msDiff(start)
+          })
+        } else if (res.length === 0) {
+          resolve({
+            status: false,
+            message: 'No user entries found in database',
             time: msDiff(start)
           })
         } else {

@@ -1,8 +1,8 @@
 // Initializes the `check` service on path `/check`
-const createModel = require('../../models/check.model')
-const createService = require('./check.class.js')
-const hooks = require('./check.hooks')
-const api = require('./check.api')
+const createService = require('./service.js')
+const createModel = require('./model')
+const hooks = require('./hooks')
+const api = require('./api')
 
 module.exports = function (app) {
 
