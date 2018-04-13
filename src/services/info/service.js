@@ -1,7 +1,9 @@
 const os = require('os')
 const usage = require('usage')
 const util = require('util')
+const mongoose = require('mongoose')
 const applyFilter = require('../applyFilter')
+
 
 const getUsage = util.promisify(usage.lookup)
 
@@ -74,6 +76,10 @@ class Service {
     data.push({group: 'server', name: 'author', value: `${packageInfo.author.name} <${packageInfo.author.email}>`})
     data.push({group: 'server', name: 'copyright', value: packageInfo.copyright})
 
+    data.push({group: 'mongo', name: 'server', value: this.options.app.get('mongodb')})
+    data.push({group: 'mongo', name: 'version', value: await mongoVersion(this.options.app)})
+
+
     return applyFilter(data, params)
   }
 
@@ -85,6 +91,16 @@ function lag() {
     setImmediate(function() {
       const delta = process.hrtime(last)
       resolve(`${delta[0]}s ${Math.round(delta[1]/1000)}ms`)
+    })
+  })
+}
+
+function mongoVersion(app) {
+  return new Promise(function(resolve) {
+    const mongooseClient = app.get('mongooseClient')
+    const admin = new mongoose.mongo.Admin(mongooseClient.connection.db)
+    admin.buildInfo(function (err, info) {
+      resolve(info.version)
     })
   })
 }

@@ -1,7 +1,7 @@
 // Initializes the `info` service on path `/info`
-const createService = require('./info.class.js')
-const hooks = require('./info.hooks')
-const api = require('./info.api')
+const createService = require('./service')
+const hooks = require('./hooks')
+const api = require('./api')
 
 module.exports = function (app) {
 
@@ -9,6 +9,7 @@ module.exports = function (app) {
 
   const options = {
     name: 'info',
+    app,
     paginate
   }
 

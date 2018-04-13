@@ -10,7 +10,13 @@ module.exports = function (app) {
   //   console.log("Could not connect to mongo server!")
   //   return console.log(err)
   // })
-  mongoose.connect(app.get('mongodb'))
+  mongoose.connect(app.get('mongodb'), {
+    poolSize: 5, 
+    socketTimeoutMS: 10000,
+    keepAlive: true,
+    // keepAlive: 120, 
+    reconnectTries: 30
+  })
   // store for later use
   app.set('mongooseClient', mongoose)
 }
