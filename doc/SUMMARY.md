@@ -10,10 +10,13 @@
   - [Config](server/config.md)
   - [REST API](server/rest.md)
   - [Structure](server/structure.md)
-  - [Info Service](server/info.md)
-  - [Check Service](server/check.md)
-  - [Authentication](server/authentication.md)
-  - [Users Service](server/users.md)
+  - [Services](server/services.md)
+
+- [Services](services/README.md)
+  - [Info Service](services/info.md)
+  - [Check Service](services/check.md)
+  - [Authentication](services/authentication.md)
+  - [Users Service](services/users.md)
 
 - [Client](client/README.md)
   - [Structure](client/structure.md)

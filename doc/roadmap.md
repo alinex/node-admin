@@ -23,6 +23,12 @@ User Administration.
 ## Milestone 6
 
 Chat application working.
+- one channel only without selection
+- authorized users may access
+- chat messages will show for all immediately
+- messages stored in mogo db
+- user possibly has gravatar icon which will be displayed
+- login/logout message will be send automatically
 
 ## Milestone 7
 

@@ -2,7 +2,7 @@
 
 ## Storage
 
-### Mongo DB vased
+### Mongo DB based
 
 For a mongo DB based service you need a model like:
 
