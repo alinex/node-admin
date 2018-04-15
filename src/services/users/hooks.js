@@ -8,8 +8,8 @@ module.exports = {
     find: [ authenticate('jwt') ],
     get: [ authenticate('jwt') ],
     create: [ hashPassword(), gravatar() ],
-    update: [ hashPassword(),  authenticate('jwt') ],
-    patch: [ hashPassword(),  authenticate('jwt') ],
+    update: [ hashPassword(), gravatar(), authenticate('jwt') ],
+    patch: [ hashPassword(), gravatar(), authenticate('jwt') ],
     remove: [ authenticate('jwt') ]
   },
 

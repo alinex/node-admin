@@ -1,24 +1,23 @@
-// Use this hook to manipulate incoming or outgoing data.
-// For more information on hooks see: http://docs.feathersjs.com/api/hooks.html
+// Add gravatar icon link as `avatar` to the service data.
+// This needs the `email` present in the service data to work.
 
-// We need this to create the MD5 hash
 const crypto = require('crypto')
 
+// Setup
+
 // The Gravatar image service
-const gravatarUrl = 'https://s.gravatar.com/avatar'
-// The size query. Our chat needs 60px images
-const query = 's=60'
+const gravatarUrl = 'https://www.gravatar.com/avatar'
+// Set the default to 60 pixel and mystery man image
+const query = 's=60&d=mm'
 
 module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
   return async context => {
-    // The user email
     const { email } = context.data
-    // Gravatar uses MD5 hashes from an email address to get the image
-    const hash = crypto.createHash('md5').update(email).digest('hex')
-
-    context.data.avatar = `${gravatarUrl}/${hash}?${query}`
-
-    // Best practise, hooks should always return the context
+    if (email) {
+      // Gravatar uses MD5 hashes from an email address to get the image
+      const hash = crypto.createHash('md5').update(email).digest('hex')
+      context.data.avatar = `${gravatarUrl}/${hash}?${query}`
+    }
     return context
   }
 }

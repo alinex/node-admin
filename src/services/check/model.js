@@ -60,7 +60,7 @@ module.exports = function (app) {
 
     mongoUsers: () => new Promise((resolve) => {
       const start = process.hrtime()
-      const userModel = require('../users/model')(app)
+      const userModel = require('../../models/users')(app)
       userModel.find((err, res) => {
         if (err) {
           resolve({

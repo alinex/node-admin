@@ -8,6 +8,7 @@ module.exports = function (app) {
     nickname: { type: String, unique: true },
     name: { type: String },
     position: { type: String },
+    avatar: { type: String },
     disabled: { type: Boolean }    
 
   }, {
