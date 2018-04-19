@@ -43,6 +43,7 @@ server side validation using alinex-validator
 config through alinex-validator
 deploy package
 productive system
+-> build divibib-admin
 
 ## Version 0.3
 
