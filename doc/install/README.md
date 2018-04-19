@@ -73,3 +73,15 @@ Setup local database with initial login:
     WriteResult({ "nInserted" : 1 })
 
 Now both are working in their directories using `npm run dev` or other commands.
+
+## Build client
+
+Therefore call the following commands within the client directory:
+
+    $ API=http://192.168.11.7:3030 npm run build
+    $ DEPLOY=root@192.168.11.7;/opt/admin npm run deploy
+
+This command will build the website and electron builds and deploy them on the admin server.
+
+If you have installed the admin server locally from source beside the client, it is already connected with symlinks.
+ 
