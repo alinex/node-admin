@@ -45,7 +45,8 @@ Because no filehandles will be kept open it is safe to rotate the files using `l
 First install the general software:
 
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    $ sudo apt-get install -y nodejs make zip wine wine-development git g++ mongodb
+    $ dpkg --add-architecture i386 && apt-get update
+    $ sudo apt-get install -y nodejs make zip git g++ mongodb wine wine-development wine32-development
     $ wget https://dl.winehq.org/wine/wine-gecko/2.44/wine_gecko-2.44-x86_64.msi
     $ wine-development msiexec /i wine_gecko-2.44-x86.msi
 
