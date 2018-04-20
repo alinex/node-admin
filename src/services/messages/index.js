@@ -1,9 +1,9 @@
 // Initializes the `messages` service on path `/messages`
-const createService = require('feathers-nedb')
+const createService = require('feathers-mongoose')
 
-const createModel = require('../../models/messages.model')
-const hooks = require('./messages.hooks')
-const api = require('./messages.api')
+const createModel = require('../../models/messages')
+const hooks = require('./hooks')
+const api = require('./api')
 
 module.exports = function (app) {
   const Model = createModel(app)

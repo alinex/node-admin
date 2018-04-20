@@ -1,10 +1,10 @@
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient')
-  if (mongooseClient.models.users) {
-    return mongooseClient.models.users
+  if (mongooseClient.models.messages) {
+    return mongooseClient.models.messages
   }
 
-  const users = new mongooseClient.Schema({
+  const messages = new mongooseClient.Schema({
     // _id
     // __v version id
     email: { type: String, unique: true },
@@ -21,5 +21,5 @@ module.exports = function (app) {
     timestamps: true
   })
 
-  return mongooseClient.model('users', users)
+  return mongooseClient.model('messages', messages)
 }

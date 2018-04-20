@@ -1,10 +1,8 @@
-# Server
-
-The server part is developed as [alinex-admin](https://github.com/alinex/node-admin) package.
-
 # Alinex Admin Server
 
 This is the server used for the __Administration Panel__. It's an interface to do administration tasks easy and fast. It should be a base for specialized tools for specific environments which can be customized to it's needs.
+
+The server part is developed as [alinex-admin](https://github.com/alinex/node-admin) package.
 
 It also contains the hosted [Client](https://github.com/alinex/quasar-admin) which is used to access the server from it's webpanel, desktop application or mobile apps.
 

@@ -103,24 +103,6 @@ The JWT payload may be specified within the `middleware/authentication.js`:
 
 Keep in mind that the payload is sent on every request/response. So keep it as small as possible. Also the defined secret (see [configuation](config.md)) have to be larger than the payload for increased security.
 
-## Setup
-
-As the users are stored in the mongo database you can use the `mongo` client to create your first user:
-
-    $ mongo
-    MongoDB shell version: 2.6.10
-    connecting to: test
-    > use alinex_admin
-    switched to db alinex_admin
-    > db.users.insert({ "_id" : ObjectId("5a9ee71276122f55a3a94796"), "email" : "info@alinex.de", "password" : "$2a$12$OspunsZCdSM.yzMAr6N/r.K13vRGF02Oc5kcQBzPWUQejr6yBSW.2", "nickname" : "alinex", "disabled": false, "createdAt" : ISODate("2018-03-06T19:08:02.271Z"), "updatedAt" : ISODate("2018-03-06T19:08:02.271Z"), "__v" : 0 })
-    WriteResult({ "nInserted" : 1 })
-
-The following fields are used:
-- email - email address used for login
-- password - `bcrypt` encrypted password
-- createdAt - date/time account created at
-- updatedAt - date/time the record was last changed
-
 ## Login
 
 Now you may get the JWT:

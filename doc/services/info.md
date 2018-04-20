@@ -1,6 +1,15 @@
 # Info Service
 
-This service is publically available for debugging.
+This service is publically available for debugging. It displays server information mainly used for debugging and analyzation.
+
+## Model
+
+The service will deliver record lists with:
+- __group__ - string name like 'host', 'node', ...
+- __name__ - string short name for the value
+- __value__ - concrete value, mostly also string type
+
+## find - information list
 
 You can get a lot of server information using:
 

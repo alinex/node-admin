@@ -35,8 +35,7 @@ This will install MongoDB. Afterwards you have to create a first user account by
 
 You may also use another name for the database instead of `alinex_admin`. But you have to change it in the configuration, too.
 
-Now you have the default user and rights and are able to do the rest online through the system itself.
-
+Now you have the default user and rights and are able to do the rest online through the system itself. Use the login displayed as placeholder in the form and delete this user later.
 
 ## Add Client Code
 

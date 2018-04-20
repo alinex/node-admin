@@ -81,9 +81,11 @@ Here you may change the complete setup of the user authentication.
       }
     },
 
-__medb__ and __mongodb__
+__nedb__ and __mongodb__
 
 This settings define the data stores which may be used like `nedb` for file store and `mongodb` for document database.
 
     "nedb": "../data",
     "mongodb": "mongodb://localhost:27017/alinex_admin"
+
+As far as possible only `mongodb` should be used.
