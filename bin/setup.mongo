@@ -1,5 +1,4 @@
 // use it with:
 // mongo alinex_admin < bin/setup.mongo
 
-db.users.insert({ "_id" : ObjectId("5a9ee71276122f55a3a94796"), "email" : "info@alinex.de", "password" : "$2a$12$OspunsZCdSM.yzMAr6N/r.K13vRGF02Oc5kcQBzPWUQejr6yBSW.2", "nickname" : "alinex", "disabled": false, "createdAt" : ISODate("2018-03-06T19:08:02.271Z"), "updatedAt" : ISODate("2018-03-06T19:08:02.271Z"), "__v" : 0 })
-
+db.users.insert({ "_id" : ObjectId( "429ee71276122f55a3a94796" ), "email" : "demo@alinex.de", "password" : "$2a$12$UDsnL7PeLa7qMBIN9ufi1e/3q.GiYJDct1SHw2lDo2NEwxjR8S2Iq", "nickname" : "demo", "disabled": false, "createdAt" : Date( 1520363282271 ), "updatedAt" : Date( 1524236599870 ), "__v" : 0, "name" : "Demo User", "position" : "Test", "avatar" : "https://www.gravatar.com/avatar/dc23461c186acb6dacd8e6137543fdec?s=60&d=mm" })
