@@ -97,8 +97,8 @@ function lag() {
 
 function mongoVersion(app) {
   return new Promise(function(resolve) {
-    const mongooseClient = app.get('mongooseClient')
-    const admin = new mongoose.mongo.Admin(mongooseClient.connection.db)
+    const mongoose = app.get('mongoose')
+    const admin = new mongoose.mongo.Admin(mongoose.connection.db)
     admin.buildInfo(function (err, info) {
       resolve(info.version)
     })

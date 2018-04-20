@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
 const checkModel = require('./services/check/model')
-
 const app = require('./app')
 
 const logger = app.get('logger')

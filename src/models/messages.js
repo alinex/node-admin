@@ -1,25 +1,19 @@
 module.exports = function (app) {
-  const mongooseClient = app.get('mongooseClient')
-  if (mongooseClient.models.messages) {
-    return mongooseClient.models.messages
+  const mongoose = app.get('mongoose')
+  if (mongoose.models.messages) {
+    return mongoose.models.messages
   }
 
-  const messages = new mongooseClient.Schema({
+  const messages = new mongoose.Schema({
     // _id
     // __v version id
-    email: { type: String, unique: true },
-    password: { type: String },
-    nickname: { type: String, unique: true },
-    name: { type: String },
-    position: { type: String },
-    avatar: { type: String },
-    disabled: { type: Boolean }    
-
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    text: { type: String },
   }, {
     // createdAt
     // updatedAt
     timestamps: true
   })
 
-  return mongooseClient.model('messages', messages)
+  return mongoose.model('messages', messages)
 }

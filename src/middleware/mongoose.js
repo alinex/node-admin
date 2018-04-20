@@ -1,15 +1,17 @@
 const mongoose = require('mongoose')
 
 module.exports = function (app) {
+  const logger = app.get('logger')
+  
   mongoose.Promise = global.Promise
-  // mongoose.connection.on("open", function(ref) {
-  //   console.log("Connected to mongo server.")
-  // })
-  // 
-  // mongoose.connection.on("error", function(err) {
-  //   console.log("Could not connect to mongo server!")
-  //   return console.log(err)
-  // })
+  // add debugging messages
+  mongoose.connection.on('open', function() {
+    logger.verbose(`Connected to mongo server at ${app.get('mongodb')}`)
+  })  
+  mongoose.connection.on('error', function(err) {
+    return logger.error(err.message)
+  })
+  // connect
   mongoose.connect(app.get('mongodb'), {
     poolSize: 5, 
     socketTimeoutMS: 10000,
@@ -18,5 +20,5 @@ module.exports = function (app) {
     reconnectTries: 30
   })
   // store for later use
-  app.set('mongooseClient', mongoose)
+  app.set('mongoose', mongoose)
 }

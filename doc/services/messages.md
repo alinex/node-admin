@@ -8,25 +8,20 @@ The service is partly secured.
 ## Model
 
 The user has the following fields are used:
-- `email` - email address used for login
-- `password` - `bcrypt` encrypted password
-- `nickname` - nickname used to be displayed in the system
-- `name` - fullname (for administration only)
-- `position` - position within this area
-- `avatar` - gravatar link as user icon
-- `disabled` - flag to disable user
+- `user` - reference to users entry
+- `text` - message text
 - `createdAt` - date/time account created at
 - `updatedAt` - date/time the record was last changed
 
-## find - list users
+## find - list messages
 
 Only for authenticated users.
 
-## get - user record
+## get - message record
 
 Only for authenticated users.
 
-## create - new user
+## create - new message
 
 Password will be encrypted.
 
@@ -40,6 +35,6 @@ Password will be encrypted.
 Only for authenticated users.
 Password will be encrypted.
 
-## remove - user
+## remove - message
 
 Only for authenticated users.

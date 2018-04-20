@@ -26,8 +26,8 @@ module.exports = function (app) {
 
     mongo: () => new Promise((resolve) => {
       const start = process.hrtime()
-      const mongooseClient = app.get('mongooseClient')
-      const db = mongooseClient.connection
+      const mongoose = app.get('mongoose')
+      const db = mongoose.connection
       const status = db.readyState
       const statusText = [
         'disconnected',
