@@ -1,5 +1,5 @@
 {
   "loglevel": "error",
-  "host": "alinex.peacock.uberspace.de",
+  "host": "alinex.peacock.uberspace.de:64850",
   "mongodb": "mongodb://alinex_mongoadmin:mi2zae8Cai@localhost:31544"
 }
