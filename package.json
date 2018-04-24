@@ -41,7 +41,7 @@
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "mocha": "mocha test/ --recursive --exit",
-    "start": "NODE_ENV=production mkdir -p logs && (node src/ | tee -a logs/access.log) 3>&1 1>&2 2>&3 | tee -a logs/error.log"
+    "start": "mkdir -p logs && (node src/ | tee -a logs/access.log) 3>&1 1>&2 2>&3 | tee -a logs/error.log"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.3",

@@ -33,4 +33,5 @@ server.on('listening', async () => {
   }
   // completely ready to be used
   logger.info('Initialization done - http://%s:%d', app.get('host'), port)
+  console.log(`Initialization done - http://${app.get('host')}:${port}`)
 })

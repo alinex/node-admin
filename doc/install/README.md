@@ -20,6 +20,11 @@ Alternatively you may also download and install the code from github:
     $ cd node-admin
     $ npm install
 
+Setup live system:
+
+    $ echo "export NODE_ENV=production" >> ~/.bash_profile
+    $ source ~/.bash_profile
+
 ## Install MongoDB Server
 
 As some modules use it as data store you have to use a local or remote MongoDB server:
@@ -33,9 +38,17 @@ This will install MongoDB. Afterwards you have to create a first user account by
     connecting to: alinex_admin
     WriteResult({ "nInserted" : 1 })
 
+If you need host, port and user then call it like:
+
+    $ mongo admin --host localhost --port 30222 -u alinex_mongoadmin -p kapu873jud < bin/setup.mongo
+
 You may also use another name for the database instead of `alinex_admin`. But you have to change it in the configuration, too.
 
 Now you have the default user and rights and are able to do the rest online through the system itself. Use the login displayed as placeholder in the form and delete this user later.
+
+If you use another address for your mongodb server, set it within `config/production.json` as variable `mongodb` like:
+
+    "mongodb": "mongodb://alinex_mongoadmin:mi2zae8Cai@localhost:31544"
 
 ## Add Client Code
 
