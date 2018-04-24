@@ -8,6 +8,10 @@ It also contains the hosted [Client](https://github.com/alinex/node-admin-client
 
 Find a complete manual at [gitbooks](https://alinex.gitbooks.io/administration-panel).
 
+## Demo
+
+Check out the demo on a small shared host: [alinex.peacock.uberspace.de](http://alinex.peacock.uberspace.de).
+
 ## Highlights
 
 This application is an optimal combination of different frameworks and packages to make the complete application round, consistent and complete. It is not only packed together but also optimized and pre configured to work.

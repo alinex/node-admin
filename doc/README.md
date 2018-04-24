@@ -40,3 +40,7 @@ And from the client, coming soon...
 
 ![Client Start](demo/client.start.png)
 ![Client Login](demo/client.login.png)
+
+## Demo
+
+Check out the demo on a small shared host: [alinex.peacock.uberspace.de](http://alinex.peacock.uberspace.de).
