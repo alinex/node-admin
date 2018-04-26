@@ -15,7 +15,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     const { email } = context.data
     if (email) {
       // Gravatar uses MD5 hashes from an email address to get the image
-      const hash = crypto.createHash('md5').update(email).digest('hex')
+      const hash = crypto.createHash('md5').update(email.toLowerCase()).digest('hex')
       context.data.avatar = `${gravatarUrl}/${hash}?${query}`
     }
     return context
