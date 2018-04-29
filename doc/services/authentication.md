@@ -110,6 +110,7 @@ Now you may get the JWT:
     $ curl -sX POST http://localhost:3030/authentication
       -H 'Content-Type: application/json'
       --data-binary '{ "strategy": "local", "email": "info@alinex.de", "password": "secret" }' | prettyjson
+      
     accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOiIxNGtyWGJ0RnJaSTJ1VmJsIiwiaWF0IjoxNTE1NDIxMzQ2LCJleHAiOjE1MTU1MDc3NDYsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjFlZGZkODc0LWNlMWEtNDNkZS05OTRlLTI4MzI1NDRiZDFlYyJ9.Zwu5XxxNu5QC6K53j358rCXFyiPIFu5TlrKoohq7Khs
 
 This access Token can now be used to access restricted services:

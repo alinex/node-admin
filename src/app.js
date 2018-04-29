@@ -60,7 +60,7 @@ app.use(expressWinston.logger({
     if (res.statusCode >= 400) { level = 'warn' }
     if (res.statusCode >= 500) { level = 'error' }
     // Ops is worried about hacking attempts so make Unauthorized and Forbidden critical
-    if (res.statusCode == 401 || res.statusCode == 403) { level = 'critical' }
+    // if (res.statusCode == 401 || res.statusCode == 403) { level = 'critical' }
     return level
   }
 }))
@@ -107,20 +107,18 @@ app.configure(profiler({
       headers: hook.params.headers && Object.keys(hook.params.headers).length ? util.inspect(hook.params.headers) : false,
       query: hook.params.query && Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,
       data: hook.data && Object.keys(hook.data).length ? util.inspect(hook.data) : false,
-      error: (hook.error ? clc.red(`${(hook.original || {}).type} ${hook.error ? hook.error.message : ''}`) : false),
+      // error: (hook.error ? clc.red(`${util.inspect(hook)} ${hook.error ? hook.error.message : ''}`) : false),
+      error: (hook.error ? clc.red(`${(hook.original || hook.error).type} ${hook.error ? hook.error.message : ''}`) : false),
       response: hook.result ? util.inspect(hook.result) : false
     }
   }
 }))
 
-// Configure a middleware for 404s and the error handler
-// app.use(express.notFound())
-// app.use(express.errorHandler({
-//   logger,
-//   public: path.join(app.get('public'), 'error')
-// }))
-app.use(expressWinston.errorLogger({
-  winstonInstance: app.get('logger'),
+// Format returning error response as JSON
+app.use(express.notFound())
+app.use(express.errorHandler({
+  logger,
+  public: path.join(app.get('public'), 'error')
 }))
 
 app.hooks(appHooks)

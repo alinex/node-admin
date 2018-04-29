@@ -8,14 +8,14 @@ module.exports = {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [processMessage()],
+    create: [ processMessage() ],
     update: [],
     patch: [],
     remove: []
   },
 
   after: {
-    all: [populateUser()],
+    all: [ populateUser() ],
     find: [],
     get: [],
     create: [],

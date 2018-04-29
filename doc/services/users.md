@@ -24,6 +24,7 @@ Only for authenticated users.
 
     $ curl -H 'Authorization: Bearer ?????-jwt-token-??????' 
       -sX GET http://localhost:3030/users | prettyjson
+      
     total: 2
     limit: 10
     skip:  0
@@ -53,6 +54,7 @@ Only for authenticated users.
 
     $ curl -H 'Authorization: Bearer ?????-jwt-token-??????' 
       -sX GET http://localhost:3030/users/429ee71276122f55a3a94796 | prettyjson 
+
     _id:       429ee71276122f55a3a94796
     email:     demo@alinex.de
     nickname:  demo
@@ -70,7 +72,7 @@ Create new user.
 Only for authenticated users, password will be encrypted.
 
     $ curl -H 'Authorization: Bearer ?????-jwt-token-??????' 
-      -sX PUT http://localhost:3030/users | prettyjson 
+      -sX POST http://localhost:3030/users
       -H 'Content-Type: application/json'
       --data-binary '{ "email" : "demo@alinex.de", "password" : "demo123", "nickname" : "demo", "disabled": false, "name" : "Demo User", "position" : "Test" }' | prettyjson
 

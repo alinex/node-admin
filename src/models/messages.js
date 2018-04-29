@@ -4,10 +4,11 @@ module.exports = function (app) {
     return mongoose.models.messages
   }
 
+  // const messages = new mongoose.Schema()
   const messages = new mongoose.Schema({
     // _id
     // __v version id
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     text: { type: String },
   }, {
     // createdAt
