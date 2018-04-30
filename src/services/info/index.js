@@ -1,25 +1,26 @@
 // Initializes the `info` service on path `/info`
 const createService = require('./service')
+
+// load hooks and api from separate files
 const hooks = require('./hooks')
 const api = require('./api')
 
 module.exports = function (app) {
-
-  const paginate = app.get('paginate')
-
-  const options = {
-    name: 'info',
+  // setup
+  const name = 'info'
+  const service = createService({
+    name,
     app,
-    paginate
-  }
+    paginate: app.get('paginate')
+  })
 
-  // Initialize our service with any options it requires
-  const info = createService(options)
-  info.docs = api
-  app.use('/info', info)
+  // add meta data to service
+  service.id = name
+  service.docs = api
 
-  // Get our initialized service so that we can register hooks and filters
-  const service = app.service('info')
+  // add service to router
+  app.use('/info', service)
 
-  service.hooks(hooks)
+  // get initialized service to register hooks and filters
+  app.service(name).hooks(hooks)
 }

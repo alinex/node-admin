@@ -1,27 +1,27 @@
-// Initializes the `users` service on path `/users`
-const createService = require('feathers-mongoose')
-
+// mongoose service
+const createService = require('feathers-mongoose') 
 const createModel = require('../../models/users')
+
+// load hooks and api from separate files
 const hooks = require('./hooks')
 const api = require('./api')
 
-module.exports = function (app) {
-  const Model = createModel(app)
-  const paginate = app.get('paginate')
+module.exports = function (app) {  
+  // setup
+  const name = 'users'
+  const service = createService({
+    name,
+    Model: createModel(app),
+    paginate: app.get('paginate')
+  })
 
-  const options = {
-    name: 'users',
-    Model,
-    paginate
-  }
+  // add meta data to service
+  service.id = name
+  service.docs = api
 
-  // Initialize our service with any options it requires
-  const users = createService(options)
-  users.docs = api
-  app.use('/users', users)
+  // add service to router
+  app.use('/users', service)
 
-  // Get our initialized service so that we can register hooks and filters
-  const service = app.service('users')
-
-  service.hooks(hooks)
+  // get initialized service to register hooks and filters
+  app.service(name).hooks(hooks)
 }

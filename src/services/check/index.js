@@ -1,28 +1,27 @@
-// Initializes the `check` service on path `/check`
-const createService = require('./service.js')
+// Initializes the `info` service on path `/info`
+const createService = require('./service')
 const createModel = require('./model')
+
+// load hooks and api from separate files
 const hooks = require('./hooks')
 const api = require('./api')
 
 module.exports = function (app) {
+  // setup
+  const name = 'check'
+  const service = createService({
+    name,
+    Model: createModel(app),
+    paginate: app.get('paginate')
+  })
 
-  const Model = createModel(app)
-  const paginate = app.get('paginate')
+  // add meta data to service
+  service.id = name
+  service.docs = api
 
-  const options = {
-    name: 'users',
-    Model,
-    paginate
-  }
+  // add service to router
+  app.use('/check', service)
 
-  // Initialize our service with any options it requires
-  const check = createService(options)
-  check.id = 'check'
-  check.docs = api
-  app.use('/check', check)
-
-  // Get our initialized service so that we can register hooks and filters
-  const service = app.service('check')
-
-  service.hooks(hooks)
+  // get initialized service to register hooks and filters
+  app.service(name).hooks(hooks)
 }

@@ -25,6 +25,8 @@ This is used to define there the server runs. If you use a port in the lower ran
     "host": "localhost",
     "port": 3030,
 
+But keep in mind that if you change the server url the client has to be changed, too. You have to build the client with the new url because it is hardcoded within the client at build time.
+
 __loglevel__
 
 Set the level to be reported (including all levels before): 'error', 'warn', 'info', 'verbose', 'debug' or 'silly'. For production best is to use 'error' or 'info'.

@@ -1,6 +1,14 @@
+const { readdirSync, statSync, existsDync } = require('fs')
+const { join } = require('path')
+
 module.exports = function (app) {
-  app.configure(require('./info'))
-  app.configure(require('./check'))
-  app.configure(require('./users'))
-  app.configure(require('./messages'))
+  const logger = app.get('logger')
+  // find sub directories
+  const dirs = readdirSync(__dirname)
+  .filter(f => statSync(join(__dirname, f)).isDirectory())
+  // load services
+  dirs.forEach(e => {
+    logger.debug(`Loading ${e} service...`)
+    app.configure(require(`./${e}`))
+  })
 }

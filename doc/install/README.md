@@ -1,7 +1,7 @@
 # Installation
 
-At first said this is more of a work base than a ready to install programm.
-So you have to install the development version, configure and build your system and deploy it.
+Attention, this isn't a fully blown application but more a work base for your needs.
+So mostly you have to install the development version, configure and build your system and deploy it.
 
 ## Install Server
 

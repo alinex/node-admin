@@ -49,13 +49,36 @@ And then the concrete logic is split in the following directories:
     hooks               # scripts to be used in hook setups
     models              # data models
 
-## Services
+### Middleware
 
-Most services contain three files:
+Are additional components which are loaded globally. This are e.g.:
+- mongoose connection
+- authentication
+- logtail
+- swagger
 
-    xxx.service.js      # the service setup
-    xxx.hooks.js        # linking to hook scripts
-    xxx.api.js          # API documentation (used by swagger)
+### Services
 
-To have a quick look what is going on, you may call the `/logtail` service to
+Each service is organized as a directory and contains at least three files:
+
+    index.js           # the service setup
+    hooks.js           # linking to hook scripts
+    api.js             # API documentation (used by swagger)
+
+To have a quick look what is going on, you may call the `/logtail` middleware to
 check the last lines in the log.
+
+### Hooks
+
+Hooks are handler which are globally stored to be used in multiple services.
+They are loaded into the service and referenced in it's hooks.
+
+Common hooks are:
+- logger - used for debugging and logs the service call before or after
+- gravatar - adds gravatar url as `avatar` from `email`
+- process-messages - checks new messages
+- populate-user - add `user` data for `userId`
+
+### Models
+
+Data models for object bridges for the data store like mongoDB or RDBMS.
