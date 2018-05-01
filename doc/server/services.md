@@ -92,10 +92,76 @@ Then you may add it in the preferred position within the hooks arrays.
 
 ### Authentication
 
-To make a service or a specific method only accessible for authenticated users add the authenticate handler:
+To make a service or a specific method only accessible for authenticated users add the authenticate handler. Here it is added to the all handler making the complete service only available for users authenticated by JSON Web Token:
 
     const { authenticate } = require('@feathersjs/authentication').hooks
+ 
+    module.exports = {
+      before: {
+        all: [ authenticate('jwt') ],
+        find: [],
+        get: [],
+        create: [],
+        update: [],
+        patch: [],
+        remove: []
+      },
+
+      after: {
+        all: [],
+        find: [],
+        get: [],
+        create: [],
+        update: [],
+        patch: [],
+        remove: []
+      },
+
+      error: {
+        all: [],
+        find: [],
+        get: [],
+        create: [],
+        update: [],
+        patch: [],
+        remove: []
+      }
+    }
+
 
 ## API
 
 The API information is used by swagger to display the data structure and query on it.
+
+    module.exports = {
+      description: 'Basic service to get the users to be used for accessing this application',
+      definitions: {
+        // get... one record
+        users: {
+          type: 'object',
+          required: [ 'email', 'password' ],
+          properties: {
+            email: {
+              type: 'string',
+              description: 'Email address as unique identifier',
+              example: 'info@alinex.de'
+            },
+            password: {
+              type: 'string',
+              description: 'Secret password (make it unguessable)'
+            },
+            _id: {
+              type: 'string',
+              description: 'The id of the user'
+            }
+          }
+        },
+        // find... multiple records
+        'users list': {
+          type: 'array',
+          items: {
+            $ref: '#/definitions/users'
+          }
+        }
+      }
+    }
