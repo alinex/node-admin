@@ -98,7 +98,7 @@ app.configure(profiler({
     if (hook.id) header += `/${hook.id}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
     return {
-      user: user,
+      user: user || 'unauthenticated',
       request: `${header} ${trailer}`,
       headers: hook.params.headers && Object.keys(hook.params.headers).length ? util.inspect(hook.params.headers) : false,
       query: hook.params.query && Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,

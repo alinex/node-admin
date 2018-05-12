@@ -9,8 +9,8 @@ module.exports = {
     find: [],
     get: [],
     create: [ processMessage() ],
-    update: [],
-    patch: [],
+    update: [ processMessage() ],
+    patch: [ processMessage() ],
     remove: []
   },
 
