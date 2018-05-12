@@ -22,7 +22,7 @@ module.exports = function (app) {
           context.params.payload = context.params.payload || {}
           // merge in additional properties
           Object.assign(context.params.payload, {
-            email: context.params.user.email
+            email: context.params.user // .email
           })
         }
       ],

@@ -20,7 +20,7 @@
         "typ": "JWT"
       },
       "audience": "https://yourdomain.com",
-      "subject": "anonymous",
+      "subject": "alinex",
       "issuer": "feathers",
       "algorithm": "HS256",
       "expiresIn": "1d"
