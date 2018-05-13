@@ -97,7 +97,7 @@ app.configure(profiler({
     let header = `${(hook.params.provider || 'INTERNAL').toUpperCase()} /${hook._log.route}/${hook.method}`
     if (hook.id) header += `/${hook.id}`
     const trailer = `${elapsed} ms - ${getPending()} pending`
-    console.log('xxxx ' + util.inspect(hook.params.payload)) // eslint-disable-line
+    // console.log('xxxx ' + util.inspect(hook.params.payload)) // eslint-disable-line
     return {
       user: user || 'unauthenticated',
       request: `${header} ${trailer}`,

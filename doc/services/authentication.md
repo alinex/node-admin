@@ -107,14 +107,24 @@ Keep in mind that the payload is sent on every request/response. So keep it as s
 
 Now you may get the JWT:
 
-    $ curl -sX POST http://localhost:3030/authentication
-      -H 'Content-Type: application/json'
-      --data-binary '{ "strategy": "local", "email": "info@alinex.de", "password": "secret" }' | prettyjson
+    $ curl -sX \
+      POST http://localhost:3030/authentication \
+      -H 'Content-Type: application/json' \
+      --data-binary '{ "strategy": "local", "email": "demo@alinex.de", "password": "demo123" }' | prettyjson
       
     accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOiIxNGtyWGJ0RnJaSTJ1VmJsIiwiaWF0IjoxNTE1NDIxMzQ2LCJleHAiOjE1MTU1MDc3NDYsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjFlZGZkODc0LWNlMWEtNDNkZS05OTRlLTI4MzI1NDRiZDFlYyJ9.Zwu5XxxNu5QC6K53j358rCXFyiPIFu5TlrKoohq7Khs
 
+To work easy within the shell I will store the token in a shell variable:
+
+    $ export JWT=$(curl -sX \
+      POST http://localhost:3030/authentication \
+      -H 'Content-Type: application/json' \
+      --data-binary '{ "strategy": "local", "email": "demo@alinex.de", "password": "demo123" }' \
+      | prettyjson --nocolor | awk '{print $2}' )
+
 This access Token can now be used to access restricted services:
 
-    $ curl -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOiIxNGtyWGJ0RnJaSTJ1VmJsIiwiaWF0IjoxNTE1NDI1NTg0LCJleHAiOjE1MTU1MTE5ODQsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjkyMGZhY2IwLWVmZTItNDc1MS1iNGJjLTYyNGFiNDNmZmRmNyJ9.x4jSVMIMpVV7j0_ei402DvckHWUcgi0xOiO9r2trY68'
-      -sX GET http://localhost:3030/messages
+    $ curl -H "Authorization: Bearer $JWT" -sX \
+      GET http://localhost:3030/messages \
+      | prettyjson
 

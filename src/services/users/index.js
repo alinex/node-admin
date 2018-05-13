@@ -17,6 +17,8 @@ module.exports = function (app) {
 
   // add meta data to service
   service.docs = api
+
+  // add service to router
   app.use('/users', service)
 
   // get initialized service to register hooks and filters

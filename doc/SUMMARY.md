@@ -17,6 +17,7 @@
   - [Check Service](services/check.md)
   - [Authentication](services/authentication.md)
   - [Users Service](services/users.md)
+  - [Message Service](services/messages.md)
 
 - [Client](client/README.md)
   - [Structure](client/structure.md)

@@ -1,6 +1,6 @@
 // mongoose service
 const createService = require('feathers-mongoose') 
-const createModel = require('../../models/users')
+const createModel = require('../../models/messages')
 
 // load hooks and api from separate files
 const hooks = require('./hooks')

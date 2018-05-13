@@ -17,9 +17,30 @@ The user has the following fields are used:
 
 Only for authenticated users.
 
-    $ curl -H 'Authorization: Bearer ?????-jwt-token-??????' 
-      -sX GET http://localhost:3030/users | prettyjson
+    $ curl -H "Authorization: Bearer $JWT" -sX \
+      GET http://localhost:3030/messages | prettyjson
 
+    total: 4
+    limit: 10
+    skip:  0
+    data: 
+      - 
+        _id:       5ae5e463f8ae8070cbd72b3b
+        text:      Hello to all of you.
+        userId:    5a9ee71276122f55a3a94796
+        createdAt: 2018-04-29T15:27:31.836Z
+        updatedAt: 2018-04-29T15:27:31.836Z
+        __v:       0
+        user: 
+          _id:       5a9ee71276122f55a3a94796
+          email:     info@alinex.de
+          createdAt: 2018-03-06T19:08:02.271Z
+          updatedAt: 2018-04-23T20:31:33.083Z
+          __v:       0
+          avatar:    https://www.gravatar.com/avatar/8a7755061e11e21d134a88e6a7a59b40?s=60&d=mm
+          name:      Alexander Schilling
+          nickname:  Alinex
+    ...
 
 ## get - message record
 
@@ -29,9 +50,9 @@ Only for authenticated users.
 
 Only for authenticated users.
 
-    $ curl -H 'Authorization: Bearer ?????-jwt-token-??????' 
-      -sX POST http://localhost:3030/messages
-      -H 'Content-Type: application/json'
+    $ curl -H "Authorization: Bearer $JWT" -sX \
+      -sX POST http://localhost:3030/messages \
+      -H 'Content-Type: application/json' \
       --data-binary '{ "text" : "Hello to all of you." }' | prettyjson
 
     _id:       5ae4ced856d93b1bb460ecf7
