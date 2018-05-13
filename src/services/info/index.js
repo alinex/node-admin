@@ -15,7 +15,6 @@ module.exports = function (app) {
   })
 
   // add meta data to service
-  service.id = name
   service.docs = api
 
   // add service to router

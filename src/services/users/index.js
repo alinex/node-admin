@@ -1,5 +1,5 @@
 // mongoose service
-const createService = require('feathers-mongoose') 
+const createService = require('feathers-mongoose')
 const createModel = require('../../models/users')
 
 // load hooks and api from separate files
@@ -16,10 +16,7 @@ module.exports = function (app) {
   })
 
   // add meta data to service
-  service.id = name
   service.docs = api
-
-  // add service to router
   app.use('/users', service)
 
   // get initialized service to register hooks and filters
