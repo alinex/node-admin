@@ -99,7 +99,7 @@ app.configure(profiler({
     const trailer = `${elapsed} ms - ${getPending()} pending`
     // console.log('xxxx ' + util.inspect(hook.params.payload)) // eslint-disable-line
     return {
-      user: user || 'unauthenticated',
+      user: user,
       request: `${header} ${trailer}`,
       headers: hook.params.headers && Object.keys(hook.params.headers).length ? util.inspect(hook.params.headers) : false,
       query: hook.params.query && Object.keys(hook.params.query).length ? util.inspect(hook.params.query) : false,
