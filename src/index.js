@@ -6,9 +6,27 @@ const app = require('./app')
 const logger = app.get('logger')
 
 logger.verbose('Starting server...')
-const port = app.get('port')
-const server = app.listen(port)
 
+const port = app.get('port')
+const ssl = app.get('ssl')
+
+// create http or https server
+var server
+if (ssl) {
+  const fs = require('fs')
+  const https = require('https')  
+  server = https.createServer({
+    key: fs.readFileSync(ssl.key),
+    cert: fs.readFileSync(ssl.cert)
+  }, app)
+} else {
+  const http = require('http')
+  server = http.createServer(app)
+}
+server.listen(port)
+app.setup(server)
+
+// listeners
 process.on('unhandledRejection', (reason) => {
   const msg = reason.message || reason
   const logger = app.get('logger')
@@ -32,6 +50,7 @@ server.on('listening', async () => {
     }
   }
   // completely ready to be used
-  logger.info('Initialization done - http://%s:%d', app.get('host'), port)
-  console.log(`Initialization done - http://${app.get('host')}:${port}`)
+  const proto = ssl ? 'https' : 'http'
+  logger.info('Initialization done - %s://%s:%d', proto, app.get('host'), port)
+  console.log(`Initialization done - ${proto}://${app.get('host')}:${port}`)
 })
