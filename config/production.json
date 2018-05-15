@@ -3,8 +3,8 @@
   "host": "demo.alinex.de",
   "port": 64850,
   "ssl": {
-    "key": "../config/server.key",
-    "cert": "../config/server.crt"
+    "key": "/home/alinex/.config/letsencrypt/live/alinex.de/privkey.pem",
+    "cert": "/home/alinex/.config/letsencrypt/live/alinex.de/cert.pem"
   },
   "mongodb": "mongodb://alinex_mongoadmin:mi2zae8Cai@localhost:31544"
 }
