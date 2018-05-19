@@ -7,14 +7,13 @@ module.exports = function (app) {
   const users = new mongoose.Schema({
     // _id
     // __v version id
-    email: { type: String, unique: true },
-    password: { type: String },
-    nickname: { type: String, unique: true },
+    email: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
+    nickname: { type: String, unique: true, required: true },
     name: { type: String },
     position: { type: String },
     avatar: { type: String },
-    disabled: { type: Boolean }    
-
+    disabled: { type: Boolean, default: true } 
   }, {
     // createdAt
     // updatedAt

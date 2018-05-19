@@ -9,8 +9,8 @@ module.exports = function (app) {
     // _id
     // __v version id
     // userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    userId: { type: mongoose.Schema.Types.ObjectId },
-    text: { type: String }
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
+    text: { type: String, required: true }
   }, {
     // createdAt
     // updatedAt
