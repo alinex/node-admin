@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo
+echo "Sudo to start mongo database..."
+echo "-----------------------------------------------------------"
+sudo service mongodb start
+sleep 5
+
+echo
+echo "Starting Server..."
+echo "-----------------------------------------------------------"
+cd ~/github/node-admin
+npm run dev &
+sleep 10
+
+echo
+echo "Starting Client..."
+echo "-----------------------------------------------------------"
+cd ~/github/node-admin-client
+npm run dev &
+sleep 30
+
+echo
+echo "==========================================================="
+echo "Use: 'killall node' to stop both"
+echo

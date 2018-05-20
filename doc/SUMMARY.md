@@ -11,6 +11,7 @@
   - [REST API](server/rest.md)
   - [Structure](server/structure.md)
   - [Services](server/services.md)
+  - [Mongo DB](server/mongoose.md)
 
 - [Services](services/README.md)
   - [Info Service](services/info.md)

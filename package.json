@@ -44,6 +44,8 @@
     "start": "mkdir -p logs && (node src/ | tee -a logs/access.log) 3>&1 1>&2 2>&3 | tee -a logs/error.log"
   },
   "dependencies": {
+    "@casl/ability": "^2.3.0",
+    "@casl/mongoose": "^2.1.1",
     "@feathersjs/authentication": "^2.1.5",
     "@feathersjs/authentication-jwt": "^2.0.1",
     "@feathersjs/authentication-local": "^1.2.1",
@@ -57,6 +59,7 @@
     "compression": "^1.7.2",
     "cors": "^2.8.4",
     "express-winston": "^2.5.1",
+    "feathers-hooks-common": "^4.11.1",
     "feathers-memory": "^2.1.1",
     "feathers-mongoose": "^6.1.1",
     "feathers-nedb": "^3.0.0",

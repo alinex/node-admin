@@ -51,33 +51,6 @@ Services can be directly based on a dababase connection using:
 
 Or it can be based on individual class.
 
-### Mongo DB based
-
-For a mongo DB based service you need a model like `src/models/users.js`:
-
-    module.exports = function (app) {
-      const mongoose = app.get('mongoose')
-      if (mongoose.models.users) {
-        return mongoose.models.users
-      }
-      const users = new mongoose.Schema({
-        email: { type: String, unique: true },
-        password: { type: String },
-        nickname: { type: String, unique: true },
-        name: { type: String },
-        position: { type: String }
-      }, { timestamps: true })
-      return mongoose.model('users', users)
-    }
-
-See the possible Schema definitions in the [mongoose docs](http://mongoosejs.com/docs/schematypes.html) and the possible
-[options](http://mongoosejs.com/docs/api.html#schema_Schema).
-
-And the service may look like `src/services/users/index.js`:
-
-    const createService = require('feathers-mongoose')
-    const createModel = require('../../models/users')
-
 ## Hooks
 
 You may add multiple handlers before, after the service or on error. Use these to easily manipulate the transferred data.
@@ -91,6 +64,8 @@ To use hooks you can write a handler method which will get a `context` element w
 Then you may add it in the preferred position within the hooks arrays.
 
 ### Authentication
+
+Authentication is based on the users service. The login is done using the user's `email` and `password` fields. More information can be found in the [authentication service](../services/authentication.md).
 
 To make a service or a specific method only accessible for authenticated users add the authenticate handler. Here it is added to the all handler making the complete service only available for users authenticated by JSON Web Token:
 
@@ -127,6 +102,18 @@ To make a service or a specific method only accessible for authenticated users a
         remove: []
       }
     }
+
+## Authorization
+
+While the authentication is used to identify the user, authorization defines the what the user is allowed to do.
+
+The authorization is defined role and attribute based. To get this working the `user` may have some role tags added. This role tags are bound to ability rules.
+
+
+
+
+
+
 
 
 ## API
