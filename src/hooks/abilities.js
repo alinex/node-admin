@@ -19,9 +19,9 @@ function subjectName(subject) {
 // define user abilities
 function defineAbilitiesFor(user) {
   const { rules, can } = AbilityBuilder.extract()
-  // unauthenticated user abbilities
+  // unauthenticated user abbilities (general)
   can('create',['users']) // register
-  can('read', ['posts', 'comments'])
+  can('read', ['info', 'comments'])
   // user specific abilities
   if (user) {
     can('manage', ['posts', 'comments'], { author: user._id })

@@ -21,13 +21,13 @@ __Server__
 - stateless using simple Java Web Token for authentication
 - websocket (Realtime API) or HTTP REST
 - service oriented architecture
-- multiple database support
 - authorization
 - server validation
 - detailed request, error and module logging
+- multiple database support
 
 __Modules__
-- user management
+- user and rights management
 - chat application
 
 ## Showcase
@@ -45,4 +45,5 @@ And from the client, coming soon...
 
 ## Demo
 
-Check out the demo on a small shared host: [alinex.peacock.uberspace.de](http://alinex.peacock.uberspace.de).
+Check out the demo on a small shared host: [demo.alinex.de](https://demo.alinex.de).
+(Use the displayed placeholder text to login.)

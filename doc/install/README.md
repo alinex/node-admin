@@ -113,3 +113,16 @@ The client installation depends on the device:
 - Desktop: download from server and install
 - Mobile app: download from server (maybe later from play store and apple store)
 
+Before installing the client you have to build it with the correct server URL:
+
+    cd node-admin-client
+    API=https://demo.alinex.de:64850 npm run build
+
+This will take some time.
+
+To install the client on a server or within the admin server you can use the deploy script:
+
+    cd node-admin-client
+    DEPLOY=admin@alinex.de:/home/alinex/public npm run deploy
+
+This will copy the client into the subfolder `public/web` and the downloads to `public/desktop` but feel free to move this static files anywhere they belong to.
