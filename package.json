@@ -66,7 +66,7 @@
     "feathers-profiler": "^0.1.5",
     "feathers-swagger": "^0.6.0",
     "helmet": "^3.12.1",
-    "mongoose": "^5.1.1",
+    "mongoose": "^5.1.2",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.5.0",
     "usage": "^0.7.1",
@@ -75,9 +75,9 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "mocha": "^5.1.1",
-    "nodemon": "^1.17.4",
-    "request": "^2.86.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "request": "^2.87.0",
     "request-promise": "^4.2.2"
   }
 }
