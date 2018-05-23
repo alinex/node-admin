@@ -68,7 +68,7 @@ Then you can download the clinet code and install it:
 
 To build and install the client into the server use:
 
-    $ API=http://alinex.peacock.uberspace.de:64850/ npm run build
+    $ API=https://demo.alinex.de:64850/ npm run build
     $ DEPLOY=alinex@peacock.uberspace.de:/home/alinex/github/node-admin npm run deploy
 
 This command will build the website and electron builds and deploy them on the admin server.
