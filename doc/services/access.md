@@ -1,10 +1,18 @@
-# Authentication
+# Access Control
+
+This part contains services for authentication and authorization.
+
+![Authentication & Authorization](auth.svg)
+
+## Authentication
+
+As displayed in the graphic the user may come with Login Data, an Jason Web Token (JWT) or nothing. The authentication will identify the user and check it'S identification against validity.
 
 To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used. This allows to use stateless server cluster and be easy to scale.
 
-As storage of the users a mongo DB is used.
+As storage for the users data a mongo DB is used.
 
-## Json Web Token (JWT)
+### Json Web Token (JWT)
 
 It is defined as an open standard in [RFC 7519](https://tools.ietf.org/html/rfc7519) and defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
@@ -78,7 +86,7 @@ The signature is used to verify that the sender of the JWT is who it says it is 
 
 As an example, if the JWT is changed on the way to the client or back on the next action the server will reject.
 
-## Setup the JWT payload
+### Setup the JWT payload
 
 The JWT payload may be specified within the `middleware/authentication.js`:
 
@@ -103,7 +111,7 @@ The JWT payload may be specified within the `middleware/authentication.js`:
 
 Keep in mind that the payload is sent on every request/response. So keep it as small as possible. Also the defined secret (see [configuation](config.md)) have to be larger than the payload for increased security.
 
-## Login
+### Login
 
 Now you may get the JWT:
 
@@ -128,3 +136,21 @@ This access Token can now be used to access restricted services:
       GET http://localhost:3030/messages \
       | prettyjson
 
+## Authorization
+
+After the user is identified the authorization will check the user's abilities. Which is what the user is allowed to do.
+
+### Roles
+
+For easy administration the user rights are specified through roles which combine some abilities to a named group. Each user can now be set on multiple roles, which define what he is allowed to do.
+
+### Abilities
+
+An ability is a right to do something. It contains:
+- action: read, update, create, delete
+- service: <name>
+- conditions: [field, value]
+
+### Cache
+
+To speed up this task an LRU-Cache is used.

@@ -16,7 +16,7 @@
 - [Services](services/README.md)
   - [Info Service](services/info.md)
   - [Check Service](services/check.md)
-  - [Authentication](services/authentication.md)
+  - [Access Control](services/access.md)
   - [Users Service](services/users.md)
   - [Message Service](services/messages.md)
 
