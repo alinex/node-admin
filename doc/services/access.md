@@ -2,7 +2,7 @@
 
 This part contains services for authentication and authorization.
 
-![Authentication & Authorization](../auth.svg)
+![Authentication & Authorization](auth.svg)
 
 ## Authentication
 
