@@ -18,6 +18,7 @@
   - [Check Service](services/check.md)
   - [Access Control](services/access.md)
   - [Users Service](services/users.md)
+  - [Roles Service](services/roles.md)
   - [Message Service](services/messages.md)
 
 - [Client](client/README.md)

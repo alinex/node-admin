@@ -4,19 +4,22 @@ This part contains services for authentication and authorization.
 
 ![Authentication & Authorization](auth.svg)
 
+## Storage
+
+All information to do authorization and authentication is stored in mongo DB collections: `users` and `roles`. Find out more about these in the administration services: [users](users.md) and [roles](roles.md).
+
 ## Authentication
 
 As displayed in the graphic the user may come with Login Data, an Jason Web Token (JWT) or nothing. The authentication will identify the user and check it'S identification against validity.
 
 To make authentication easy and secure [JWT](https://auth0.com/docs/jwt) is used. This allows to use stateless server cluster and be easy to scale.
 
-As storage for the users data a mongo DB is used.
-
 ### Json Web Token (JWT)
 
 It is defined as an open standard in [RFC 7519](https://tools.ietf.org/html/rfc7519) and defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
 The JWT defines a compact and self-contained way for securely transmitting information between parties as a signed JSON object consisting of three parts:
+
 - Header
 - Payload
 - Signature
@@ -25,7 +28,7 @@ Therefore, a JWT typically looks like the following with all three parts being B
 
     xxxxx.yyyyy.zzzzz
 
-__Header__
+#### Header
 
 The header typically consists of two parts: the type of the token, which is JWT, and the hashing algorithm being used, such as HMAC SHA256 or RSA.
 
@@ -34,7 +37,7 @@ The header typically consists of two parts: the type of the token, which is JWT,
       "typ": "JWT"
     }
 
-__Payload__
+#### Payload
 
 The second part of the token is the payload, which contains the claims. Claims are statements about the user.
 
@@ -73,7 +76,7 @@ An example of payload could be:
       userId: "5a9ee71276122f55a3a94796"
     }
 
-__Signature__
+#### Signature
 
 To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that like:
 
@@ -119,7 +122,7 @@ Now you may get the JWT:
       POST http://localhost:3030/authentication \
       -H 'Content-Type: application/json' \
       --data-binary '{ "strategy": "local", "email": "demo@alinex.de", "password": "demo123" }' | prettyjson
-      
+
     accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOiIxNGtyWGJ0RnJaSTJ1VmJsIiwiaWF0IjoxNTE1NDIxMzQ2LCJleHAiOjE1MTU1MDc3NDYsImF1ZCI6Imh0dHBzOi8veW91cmRvbWFpbi5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyIsImp0aSI6IjFlZGZkODc0LWNlMWEtNDNkZS05OTRlLTI4MzI1NDRiZDFlYyJ9.Zwu5XxxNu5QC6K53j358rCXFyiPIFu5TlrKoohq7Khs
 
 To work easy within the shell I will store the token in a shell variable:
@@ -144,12 +147,16 @@ After the user is identified the authorization will check the user's abilities. 
 
 For easy administration the user rights are specified through roles which combine some abilities to a named group. Each user can now be set on multiple roles, which define what he is allowed to do.
 
+The roles are stored in the MongoDB collection `roles` containing also the defined abilities as a list.
+
 ### Abilities
 
 An ability is a right to do something. It contains:
+
+- service: \<name>
 - action: read, update, create, delete
-- service: <name>
 - conditions: [field, value]
+- disallow: \<flag>
 
 ### Cache
 
