@@ -8,7 +8,6 @@ module.exports = function (app) {
   const messages = new mongoose.Schema({
     // _id
     // __v version id
-    // userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
     text: { type: String, required: true }
   }, {

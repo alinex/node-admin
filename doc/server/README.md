@@ -4,7 +4,7 @@ This is the server used for the __Administration Panel__. It's an interface to d
 
 The server part is developed as [alinex-admin](https://github.com/alinex/node-admin) package.
 
-It also contains the hosted [Client](https://github.com/alinex/quasar-admin) which is used to access the server from it's webpanel, desktop application or mobile apps.
+In it the ready build [Client](https://github.com/alinex/quasar-admin) can be included to access the server from it's webpanel, desktop application or mobile apps.
 
 ## Features
 

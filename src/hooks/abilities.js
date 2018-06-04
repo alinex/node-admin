@@ -26,9 +26,8 @@ function defineAbilitiesFor(user) {
   if (user) {
     can('manage', ['posts', 'comments'], { author: user._id })
     can(['read', 'update'], 'users', { _id: user._id })
+    can(['read', 'update', 'create', 'delete'], 'roles')
     // role based
-
-
   }
   // create users
   if (process.env.NODE_ENV !== 'production') {

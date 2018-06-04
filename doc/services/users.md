@@ -8,13 +8,16 @@ The service is partly secured.
 ## Model
 
 The user has the following fields are used:
+
+- `_id` - object id
+- `__v` - integer // version id
 - `email` - email address used for login
 - `password` - `bcrypt` encrypted password
 - `nickname` - nickname used to be displayed in the system
-- `name` - fullname (for administration only)
-- `position` - position within this area
-- `avatar` - gravatar link as user icon
-- `disabled` - flag to disable user
+- `name`? - fullname (for administration only)
+- `position`? - position within this area
+- `avatar`? - gravatar link as user icon
+- `disabled`? - flag to disable user
 - `createdAt` - date/time account created at
 - `updatedAt` - date/time the record was last changed
 

@@ -147,16 +147,23 @@ After the user is identified the authorization will check the user's abilities. 
 
 For easy administration the user rights are specified through roles which combine some abilities to a named group. Each user can now be set on multiple roles, which define what he is allowed to do.
 
+- name: string
+- description?: string
+- enabled?: flag // default is `false`
+- abilities: list
+
 The roles are stored in the MongoDB collection `roles` containing also the defined abilities as a list.
 
 ### Abilities
 
 An ability is a right to do something. It contains:
 
-- service: \<name>
-- action: read, update, create, delete
-- conditions: [field, value]
-- disallow: \<flag>
+- actions: 'read', 'update', 'create', 'delete'
+- subject: name
+- conditions?: { field: check, ... }
+- fields?: name, ...
+- inverted?: flag // default is `false`
+- reason?: string // mainly to specify why user can't do something. See forbidden reasons for details
 
 ### Cache
 

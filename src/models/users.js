@@ -13,7 +13,7 @@ module.exports = function (app) {
     name: { type: String },
     position: { type: String },
     avatar: { type: String },
-    disabled: { type: Boolean, default: true } 
+    disabled: { type: Boolean } 
   }, {
     // createdAt
     // updatedAt
